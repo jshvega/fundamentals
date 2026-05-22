@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>FUNDAMENTALS by Manfred</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/global.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,55 +17,81 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
   </head>
 
-  <body>
+  <body id="body">
 
     <div id="cursor"></div>
+
+    <!------------------- GLOBAL ------------------->
+    <!-- PRELOADER -->
+    <div class="preloader">
+        <img class="preloader-logo" src="media/M_LOGO_480_POSITIVE.png" alt="Manfred Logo">
+        <div class="preloader-bottom">
+            <div class="preloader-headline">
+                <div class="word-wrap"><span class="word">Might</span></div>
+                <div class="word-wrap"><span class="word">as</span></div>
+                <div class="word-wrap"><span class="word">well</span></div>
+                <div class="word-wrap"><span class="word">try.</span></div>
+            </div>
+        <div class="preloader-copy">©2026</div>
+        </div>
+    </div>
+    <!------------------- GLOBAL ------------------->
+
+
+
+
 
     <div id="wrapper">
 
         <div class="top">
-            <h1 class="dsp-h-a">FUNDA-<br>MENTALS</h1>
-            <h1 class="dsp-h-b">FUNDAMENTALS</h1>
-            <div class="topsub">
-                <p class="altfont">by</p>
-                <p class="altfont">Manfred</p>
-                <p class="altfont">Vega</p>
+            <h1 class="top-title-desktop">FUNDAMENTALS</h1>
+            <h1 class="top-title-mobile">FUNDA-<br>MENTALS</h1>
+            <div class="top-author">
+                <p>by</p>
+                <p>Manfred</p>
+                <p>Vega</p>
             </div>
         </div>
 
         <div class="bottom">
-            <hr class="divline">
-            <nav aria-label="Projects" class="navpro">
-                <a href="/calculator/">CALCULATOR</a>
-                <a href="#">TO-DO APP</a>
-                <a href="#">WEATHER DASHBOARD</a>
-                <a href="#">MOVIE SEARCH</a>
+
+            <hr class="hr-main">
+
+            <nav aria-label="Projects" class="nav-projects">
+                <a href="/calculator/" class="linkEffect">CALCULATOR</a>
+                <a href="#" class="linkEffect">TO-DO APP</a>
+                <a href="#" class="linkEffect">WEATHER DASHBOARD</a>
+                <a href="#" class="linkEffect">MOVIE SEARCH</a>
                 <div>
-                    <a href="#">EXPENSE TRACKER</a>
+                    <a href="#" class="linkEffect">EXPENSE TRACKER</a>
                 </div>
             </nav>
-            <hr class="divline">
-            <div class="bottomsub">
-                <a href="#" class="dsp-about-a">About</a>
-                <nav aria-label="Socials" class="navsocials">
-                    <a href="#">Email</a>
-                    <a href="#">GitHub</a>
-                    <a href="#">LinkedIn</a>
-                    <a href="#">Instagram</a>
-                    <a href="#">Behance</a> 
-                    <a href="#">Twitter</a>
+
+            <hr class="hr-main">
+
+            <div class="bottom-bottom">
+                <a href="#" class="about-desktop simpleEffect">About</a>
+                <nav aria-label="Socials" class="nav-socials">
+                    <a href="#" class="simpleEffect">Email</a>
+                    <a href="#" class="simpleEffect">GitHub</a>
+                    <a href="#" class="simpleEffect">LinkedIn</a>
+                    <a href="#" class="simpleEffect">Instagram</a>
+                    <a href="#" class="simpleEffect">Behance</a> 
+                    <a href="#" class="simpleEffect">X</a>
                 </nav>
                 <div class="about-rights">
-                    <a href="#" class="dsp-about-b">About</a>
-                    <p class="dsp-rights-a">©2026. All rights reserved.</p>
-                    <p class="dsp-rights-b">©2026.<br>All rights reserved.</p>
-                    <p class="dsp-rights-c">©2026</p>
+                    <a href="#" class="about-mobile">About</a>
+                    <p class="rights-desktop">©2026. All rights reserved.</p>
+                    <p class="rights-mobile">©2026.<br>All rights reserved.</p>
+                    <p class="rights-mini">©2026</p>
                 </div>
             </div>
+
         </div>
 
     </div>
 
+    <script src="/global.js"></script>
     <script src="/index.js"></script>
   </body>
 
