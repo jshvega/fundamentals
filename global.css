@@ -35,6 +35,22 @@ body {
 h1, h2, h3, h4, p, a {
     margin: 0;
 }
+/*
+@media (max-width: 48em) {
+    :root {
+        --fs-sm: 1.2rem;
+        --fs-md: 1.4rem;
+        --fs-lg: 2.2rem;
+    }
+}
+@media (max-width: 31em) {
+    :root {
+        --fs-sm: 1rem;
+        --fs-md: 1.1rem;
+        --fs-lg: 1.4rem;
+    }
+}
+*/
 
 
 
@@ -203,7 +219,7 @@ h1, h2, h3, h4, p, a {
         padding: 1.5em 0 4em 0;
     }
     .word {
-        font-size: 4.5em;
+        font-size: 3em;
         margin: 0;
     }
     .preloader-headline{
