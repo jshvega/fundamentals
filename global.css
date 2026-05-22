@@ -35,22 +35,38 @@ body {
 h1, h2, h3, h4, p, a {
     margin: 0;
 }
-/*
+/* MID-SIZE - Below 1,200px */
+@media (max-width: 78em) {
+    :root {
+        --fs-sm: 1.4rem;
+        --fs-md: 2rem;
+        --fs-lg: 3.2rem;
+    }
+}
+/* TABLET   - Below   768px */
 @media (max-width: 48em) {
     :root {
-        --fs-sm: 1.2rem;
-        --fs-md: 1.4rem;
-        --fs-lg: 2.2rem;
+        --fs-sm: 1.4rem;
+        --fs-md: 2rem;
+        --fs-lg: 3.2rem;
     }
 }
+/* MOBILE   - Below   480px */
 @media (max-width: 31em) {
     :root {
-        --fs-sm: 1rem;
-        --fs-md: 1.1rem;
-        --fs-lg: 1.4rem;
+        --fs-sm: 1.4rem;
+        --fs-md: 2rem;
+        --fs-lg: 3.2rem;
     }
 }
-*/
+/* MINI     - Below   360px */
+@media (max-width: 20em) {
+    :root {
+        --fs-sm: 1.4rem;
+        --fs-md: 2rem;
+        --fs-lg: 3.2rem;
+    }
+}
 
 
 
