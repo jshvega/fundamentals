@@ -28,7 +28,7 @@ body {
     --font-display: "Playfair Display", serif;
     /* Font sizes */
     --fs-sm: 1.4rem; /*14px equivalent*/
-    --fs-md: 2rem; /*20px equivalent*/
+    --fs-md: 1.8rem; /*18px equivalent*/
     --fs-lg: 3.2rem; /*32px equivalent*/
 }
 /* TEXT */
