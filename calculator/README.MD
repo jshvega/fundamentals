@@ -1,12 +1,15 @@
 # CALCULATOR APP
 
 ## Live Demo
-https://...
+https://fundamentals.manfred.studio/calculator/
 
 ## Status
-Not Started
+In Progress
 
 ## Stack
+- HTML
+- CSS
+- Vanilla JS
 
 ## Goal
 
