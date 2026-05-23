@@ -104,9 +104,79 @@ body{
     align-items: center;
     justify-content: center;
 }
-.redbox{
-    display: none;
-    width: 50px;
-    height: 100%;
-    background-color: red;
+
+.calculator-grid{
+    width: 300px;
+    max-width: 300px;
+    height: 70%;
+    max-height: 500px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: minmax(120px, auto) repeat(5, 1fr);
+    gap: 1.25rem;
+    padding: 2rem;
+    border: 1px solid #A6A29F;
+    border-radius: 20px;
+}
+.output-screen{
+    grid-column: 1 / -1;
+    background-color: transparent;
+    border-radius: 12px;
+    border: 1px solid var(--color-dark);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    word-break: break-all;
+}
+.spantwo{
+   grid-column: span 2;
+}
+
+.prev-operand, .curr-operand{
+    display: flex;
+    align-items: center;
+    padding: 0 2rem 0 2rem;
+}
+.prev-operand{
+    height: 40%;
+    
+    font-weight: 400;
+    font-size: var(--fs-sm);
+}
+.curr-operand{
+    height: 60%;
+    padding-right: 2rem;
+    justify-content: end;
+    font-size: 3.5rem;
+    text-align: end;
+}
+
+.button-base, .button-dark, .button-accent{
+    background-color: transparent;
+    border-radius: 12px;
+}
+.button-dark, .button-accent{
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-style: italic;
+}
+.button-base{
+    font-family: var(--font-primary);
+    font-size: 2.4rem;
+    color: var(--color-dark);
+    border: 1px solid var(--color-tonedown);
+}
+.button-dark{
+    color: var(--color-dark);
+    border: 1px solid var(--color-dark);
+}
+.button-accent{
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+}
+.button-base:hover, .button-dark:hover, .button-accent:hover{
+    background-color: #EBE6E1;
+    cursor: pointer;
 }
