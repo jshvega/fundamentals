@@ -1,3 +1,5 @@
+console.log('test')
+
 class Calculator {
 
     // Stores DOM refs and initializes state with clearAll()
@@ -68,24 +70,24 @@ class Calculator {
     // Takes a raw number/string and returns a formatted string
     getDisplayNumber(number){
         const stringNumber = number.toString()
-        const integerPart = parseFloat(stringNumber.split('.'), [0])
+        const integerPart = parseFloat(stringNumber.split('.') [0])
         const decimalPart = stringNumber.split('.')[1]
         let integerDisplay
         if(isNaN(integerPart)){
             integerDisplay = ''
         } else{
-            integerPart.toLocaleString('en', { maximumFractionDigits: 0 })
+            integerDisplay = integerPart.toLocaleString('en', { maximumFractionDigits: 0 })
         }
         if(decimalPart != null){
             return integerDisplay + '.' + decimalPart
         } else{
-            integerDisplay
+            return integerDisplay
         }
     }
 
     // Writes state of the DOM
     updateDisplay(){
-        currentOperandTextElement.innerText = getDisplayNumber(this.currentOperand)
+        this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand)
         if(this.operation != null){
             this.previousOperandTextElement.innerText = this.getDisplayNumber(this.previousOperand)+' '+this.operation
         } else{
@@ -94,3 +96,47 @@ class Calculator {
     }
 
 }
+
+
+// Variable declarations
+const numberBtns = document.querySelectorAll('[data-number]')
+const operatorBtns = document.querySelectorAll('[data-operator]')
+const acBtn = document.querySelector('[data-all-clear]')
+const cBtn = document.querySelector('[data-clear]')
+const equalsBtn = document.querySelector('[data-equals]')
+const previousOperandTextElement = document.querySelector('[data-previous-operand]')
+const currentOperandTextElement = document.querySelector('[data-current-operand]')
+
+// Initiate calculator
+const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
+
+// For each button, on click, calling corresponding method and upating display
+numberBtns.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.appendNumber(button.innerText)
+        calculator.updateDisplay()
+    })
+})
+
+operatorBtns.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.chooseOperation(button.innerText)
+        calculator.updateDisplay()
+    })
+})
+
+// Wiring to corresponding method and updating the display
+acBtn.addEventListener('click', () => {
+    calculator.clearAll()
+    calculator.updateDisplay()
+})
+
+cBtn.addEventListener('click', () => {
+    calculator.clear()
+    calculator.updateDisplay()
+})
+
+equalsBtn.addEventListener('click', () => {
+    calculator.compute()
+    calculator.updateDisplay()
+})
