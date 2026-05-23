@@ -1,3 +1,100 @@
-body {
+
+/* --------------------------- OVERALL --------------------------- */
+body{
+    box-sizing: border-box;
+}
+#wrapper-calculator{
+    width: 100dvw;
+    height: 100dvh; /* Remove if content in #main is longer than vh */
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+
+
+
+/* ---------------------- SECTIONS GLOBAL ----------------------- */
+/* HEADER */
+#header-main{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2rem;
+}
+.header-main-nav{
+    width: 90dvw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+}
+.header-main-nav a{
+    text-decoration: none;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--color-dark);
+}
+.header-main-nav p{
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-style: italic;
+    white-space: nowrap;
+}
+/* FOOTER */
+#footer-line{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2.75rem;
+}
+.footer-line-sub{
+    width: 90dvw;
+}
+/* MID-SIZE - Below 1,200px */
+@media (max-width: 78em) {
+    
+}
+/* TABLET   - Below   768px */
+@media (max-width: 48em) {
+    #header-main hr{
+        display: none;
+    }
+}
+/* MOBILE   - Below   480px */
+@media (max-width: 31em) {
+    #footer-line{
+        display: none;
+    }
+}
+/* MINI     - Below   360px */
+@media (max-width: 20em) {
+    .header-main-nav{
+        gap: 1rem;
+    }
+    .header-main-nav p{
+        font-size: var(--fs-sm);
+    }
+}
+
+
+
+
+/* ----------------------- SECTION MAIN ------------------------- */
+#main{
+    padding: 4.2rem 0 0 0; /* To avoid going under the FIXED header */
+    width: 100dvw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.redbox{
+    display: none;
+    width: 50px;
+    height: 100%;
     background-color: red;
 }

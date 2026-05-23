@@ -61,6 +61,7 @@ h1, h2, h3, h4, p, a {
     width: 100%;
     border: none;              
     opacity: 1; 
+    margin: 0;
 }
 .hr-main{             
     border-top: 1px solid var(--color-dark);                   
@@ -245,7 +246,7 @@ h1, h2, h3, h4, p, a {
 /* ------------------------------------------------------------- */
 /* ------------------------ VIEWPORTS BG ----------------------- */
 /* ------------------------------------------------------------- */
-/*
+
 @media (max-width: 78em) {
     #body {background-color: red;}
 }
@@ -258,7 +259,7 @@ h1, h2, h3, h4, p, a {
 @media (max-width: 20em) {
     #body {background-color: purple;}
 }
-*/
+
 /* MID-SIZE - Below 1,200px */
 /* TABLET   - Below   768px */
 /* MOBILE   - Below   480px */

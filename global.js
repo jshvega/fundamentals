@@ -1,19 +1,24 @@
 // CURSOR
 const cursor = document.getElementById('cursor');
-let mouseX = 0, mouseY = 0;
-let cursorX = 0, cursorY = 0;
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
-function animateCursor() {
-  // lerp — adjust 0.12 for more/less delay (lower = more lag)
-  cursorX += (mouseX - cursorX) * 0.12;
-  cursorY += (mouseY - cursorY) * 0.12;
-  cursor.style.transform = `translate(calc(${cursorX}px - 50%), calc(${cursorY}px - 50%))`;
-  requestAnimationFrame(animateCursor);
+if (cursor) {
+  let mouseX = 0, mouseY = 0;
+  let cursorX = 0, cursorY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.12;
+    cursorY += (mouseY - cursorY) * 0.12;
+    cursor.style.transform = `translate(calc(${cursorX}px - 50%), calc(${cursorY}px - 50%))`;
+    requestAnimationFrame(animateCursor);
+  }
+
+  animateCursor();
 }
-animateCursor();
+
 
 
 
