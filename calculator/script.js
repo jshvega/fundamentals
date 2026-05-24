@@ -23,6 +23,7 @@ class Calculator {
 
     // Implements a decimal guard; appends new number
     appendNumber(number){
+        if (this.currentOperand.toString().length >= 16) return
         if(number === '.' && this.currentOperand.includes('.')) return
         this.currentOperand = this.currentOperand.toString() + number.toString()
     }
