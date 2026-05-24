@@ -11,11 +11,11 @@
 
 |#|Project|Stack|Status|
 |-|-|-|-|
-|01|[Calculator](./calculator)|HTML · CSS · Vanilla JS|🚧 Not started|
-|02|[To-Do App](./todo)|Vanilla JS · localStorage|🚧 Not started|
-|03|[Weather Dashboard](./weather)|React · TypeScript · Vite|🚧 Not started|
-|04|[Movie Searcher](./movies)|Next.js · TypeScript · TanStack Query|🚧 Not started|
-|05|[Expense Tracker](./expenses)|Next.js · Supabase · Docker · GitHub Actions|🚧 Not started|
+|01|[Calculator](./calculator)|HTML · CSS · Vanilla JS|Completed|
+|02|[To-Do App](./todo)|Vanilla JS · localStorage|In Progress|
+|03|[Weather Dashboard](./weather)|React · TypeScript · Vite|Not started|
+|04|[Movie Searcher](./movies)|Next.js · TypeScript · TanStack Query|Not started|
+|05|[Expense Tracker](./expenses)|Next.js · Supabase · Docker · GitHub Actions|Not started|
 
 
 \---
@@ -49,15 +49,20 @@ The goal isn't purity for its own sake. It's to prove, to myself first, that I c
 
 ```
 FUNDAMENTALS/
-├── index.html          # Hub page — links to all five projects
-├── style.css
-├── README.md           # You're here
+├── index.html              # Hub page — links to all projects
+├── index.css
+├── index.js
+├── global.css              # Site-wide base styles & CSS variables
+├── global.js
+├── README.md
 ├── .gitignore
+├── under-construction.html
 ├── calculator/
-├── todo/
-├── weather/
+├── expenses/
+├── media/
 ├── movies/
-└── expenses/
+├── todo/
+└── weather/
 ```
 
 Each project folder contains its own README with stack, goals, what was learned, and challenges faced.
