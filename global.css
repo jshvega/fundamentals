@@ -35,11 +35,28 @@ body {
 h1, h2, h3, h4, p, a {
     margin: 0;
 }
+/* OTHER */
+#uc{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#uc h2{
+    font-family: var(--font-display);
+    font-size: var(--fs-lg);
+    font-style: italic;
+    text-align: center;
+    font-weight: 300;
+}
 
 
 
 
-/* --- OTHER --- */
+/* ------------------------------------------------------------- */
+/* ---------------------------- MISC --------------------------- */
+/* ------------------------------------------------------------- */
 * {
   cursor: default;
 }
@@ -131,6 +148,98 @@ h1, h2, h3, h4, p, a {
 @media (max-width: 48em) {
     #cursor{
         display: none;
+    }
+}
+/* Body Template */
+.wrapper-global{
+    width: 100dvw;
+    height: 100dvh; /* Remove if content in #main is longer than vh */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+
+
+
+/* ------------------------------------------------------------- */
+/* ---------------------- HEADER & FOOTER ---------------------- */
+/* ------------------------------------------------------------- */
+/* HEADER */
+#header-main{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2.5rem;
+}
+.header-main-nav{
+    width: 90dvw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+}
+.header-main-nav a{
+    text-decoration: none;
+    font-size: var(--fs-md);
+    font-weight: 600;
+    color: var(--color-dark);
+}
+.header-main-nav p{
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-style: italic;
+    white-space: nowrap;
+}
+/* FOOTER */
+#footer-line{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 3.2rem;
+}
+.footer-line-sub{
+    width: 90dvw;
+}
+/* MID-SIZE - Below 1,200px */
+@media (max-width: 78em) {
+    
+}
+/* TABLET   - Below   768px */
+@media (max-width: 48em) {
+    .header-main-nav a{
+        font-size: var(--fs-sm);
+    }
+    .header-main-nav p{
+        font-size: 1.6rem;
+    }
+    #header-main{
+        padding-top: 2rem;
+    }
+    #footer-line{
+        padding-bottom: 2.75rem;
+    }
+}
+/* MOBILE   - Below   500px */
+@media (max-width: 31em) {
+    #header-main hr{
+        display: none;
+    }
+    #footer-line{
+        display: none;
+    }
+}
+/* MINI     - Below   320px */
+@media (max-width: 20em) {
+    .header-main-nav{
+        gap: 1rem;
+    }
+    .header-main-nav p{
+        font-size: var(--fs-sm);
     }
 }
 

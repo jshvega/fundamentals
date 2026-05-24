@@ -1,96 +1,14 @@
 
 /* --------------------------- OVERALL --------------------------- */
-body{
-    box-sizing: border-box;
-}
 #wrapper-calculator{
     width: 100dvw;
     height: 100dvh; /* Remove if content in #main is longer than vh */
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+body, #wrapper-calculator, #main{
     box-sizing: border-box;
-}
-
-
-
-
-/* ---------------------- SECTIONS GLOBAL ----------------------- */
-/* HEADER */
-#header-main{
-    position: fixed;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 2.5rem;
-}
-.header-main-nav{
-    width: 90dvw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 4rem;
-}
-.header-main-nav a{
-    text-decoration: none;
-    font-size: var(--fs-md);
-    font-weight: 600;
-    color: var(--color-dark);
-}
-.header-main-nav p{
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-style: italic;
-    white-space: nowrap;
-}
-/* FOOTER */
-#footer-line{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 3.2rem;
-}
-.footer-line-sub{
-    width: 90dvw;
-}
-/* MID-SIZE - Below 1,200px */
-@media (max-width: 78em) {
-    
-}
-/* TABLET   - Below   768px */
-@media (max-width: 48em) {
-    .header-main-nav a{
-        font-size: var(--fs-sm);
-    }
-    .header-main-nav p{
-        font-size: 1.6rem;
-    }
-    #header-main{
-        padding-top: 2rem;
-    }
-    #footer-line{
-        padding-bottom: 2.75rem;
-    }
-}
-/* MOBILE   - Below   500px */
-@media (max-width: 31em) {
-    #header-main hr{
-        display: none;
-    }
-    #footer-line{
-        display: none;
-    }
-}
-/* MINI     - Below   320px */
-@media (max-width: 20em) {
-    .header-main-nav{
-        gap: 1rem;
-    }
-    .header-main-nav p{
-        font-size: var(--fs-sm);
-    }
 }
 
 
@@ -99,38 +17,37 @@ body{
 /* ----------------------- SECTION MAIN ------------------------- */
 #main{
     padding: 4.2rem 0 0 0; /* To avoid going under the FIXED header */
-    width: 100dvw;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
 }
 
 .calculator-grid{
-    width: 300px;
-    max-width: 300px;
-    height: 70%;
-    max-height: 500px;
-    min-height: 450px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
     gap: 1.25rem;
+
+    width: 300px;
+    height: 70%;
+    max-height: 500px;
+    min-height: 450px;
+    
     padding: 2rem;
+    box-sizing: border-box;
+
     border: 1px solid #A6A29F;
     border-radius: 20px;
-    box-sizing: border-box;
 }
 .output-screen{
     grid-column: 1 / -1;
-    background-color: transparent;
-    border-radius: 10px;
-    border: 1px solid var(--color-dark);
-
     display: flex;
     flex-direction: column;
 
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid var(--color-dark);
     word-break: break-all;
 }
 .spantwo{
@@ -140,7 +57,7 @@ body{
 .prev-operand, .curr-operand{
     display: flex;
     align-items: center;
-    padding: 0.5rem 2rem 0.5rem 2rem;
+    padding: 0.5rem 2rem;
 }
 .prev-operand{
     min-height: 40px;
@@ -148,8 +65,8 @@ body{
     font-size: var(--fs-sm);
 }
 .curr-operand{
-    min-height: 60px;
     justify-content: end;
+    min-height: 60px;
     font-size: 3.5rem;
     text-align: end;
 }
@@ -157,6 +74,9 @@ body{
 .button-base, .button-dark, .button-accent{
     background-color: transparent;
     border-radius: 10px;
+    user-select: none;
+    border-width: 1px;
+    border-style: solid;
 }
 .button-dark, .button-accent{
     font-family: var(--font-display);
@@ -167,15 +87,15 @@ body{
     font-family: var(--font-primary);
     font-size: 2.4rem;
     color: var(--color-dark);
-    border: 1px solid var(--color-tonedown);
+    border-color: var(--color-tonedown);
 }
 .button-dark{
     color: var(--color-dark);
-    border: 1px solid var(--color-dark);
+    border-color: var(--color-dark);
 }
 .button-accent{
     color: var(--color-accent);
-    border: 1px solid var(--color-accent);
+    border-color: var(--color-accent);
 }
 .button-base:hover, .button-dark:hover, .button-accent:hover{
     background-color: #EBE6E1;
@@ -183,7 +103,7 @@ body{
 }
 .button-base:active, .button-dark:active, .button-accent:active{
     background-color: #F0E7DD;
-    border: 1px solid var(--color-accent);
+    border-color: var(--color-accent);
 }
 
 /* MID-SIZE - Below 1,200px */
@@ -202,7 +122,6 @@ body{
     }
     .calculator-grid{
         width: 100%;
-        max-width: none;
         height: 100%;
         max-height: 600px;
         gap: 1.25rem;
@@ -211,15 +130,13 @@ body{
 }
 /* MINI     - Below   320px */
 @media (max-width: 20em) {
-    .output-screen{
+    .output-screen, .button-dark, .button-accent, .button-base{
         border-radius: 8px;
     }
     .button-dark, .button-accent{
         font-size: 2.2rem;
-        border-radius: 8px;
     }
     .button-base{
         font-size: 1.8rem;
-        border-radius: 8px;
     }
 }

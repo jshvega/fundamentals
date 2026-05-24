@@ -23,13 +23,17 @@ class Calculator {
 
     // Implements a decimal guard; appends new number
     appendNumber(number){
-        if (this.currentOperand.toString().length >= 16) return
+        if (this.currentOperand.toString().length >= 14) return
         if(number === '.' && this.currentOperand.includes('.')) return
         this.currentOperand = this.currentOperand.toString() + number.toString()
     }
 
     // Implements empty operand guard and chaining behavior
     chooseOperation(operation){
+        if(this.currentOperand === '' && this.operation !== undefined){
+            this.operation = operation
+            return
+        }
         if(this.currentOperand === ''){
             return
         }
