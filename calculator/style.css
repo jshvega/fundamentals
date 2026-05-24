@@ -72,6 +72,7 @@ body, #wrapper-calculator, #main{
 }
 
 .button-base, .button-dark, .button-accent{
+    touch-action: manipulation;
     background-color: transparent;
     border-radius: 10px;
     user-select: none;
