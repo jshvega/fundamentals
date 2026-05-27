@@ -35,6 +35,8 @@ body, #screen-todo, #todo-section{
     height: 100%;
 }
 #todo-wrapper{
+    touch-action: manipulation;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -69,7 +71,7 @@ body, #screen-todo, #todo-section{
         max-width: none;
     }
     #todo-section{
-        padding: 3rem 0 0 0; /* To avoid going under the FIXED header */
+        padding: 4rem 0 0 0; /* To avoid going under the FIXED header */
     }
 }
 @media (max-width: 20em) /*MINI:   > 320  */ {
@@ -145,6 +147,7 @@ body, #screen-todo, #todo-section{
 @media (max-width: 31em) /*MOBILE: > 498  */ {
     #input{
         gap: 0;
+        padding: 1.25rem 1.5rem 1.25rem 2.5rem;
     }
     #input input{
         flex: 0;
@@ -281,6 +284,9 @@ body, #screen-todo, #todo-section{
     }
 }
 @media (max-width: 31em) /*MOBILE: > 498  */ {
+    #tasks ul{
+        gap: 2rem;
+    }
     #tasks li{
         column-gap: 1.5rem;
     }
