@@ -9,6 +9,14 @@
 body, #screen-todo, #todo-section{
     box-sizing: border-box;
 }
+/* ------------------------ DISPLAY SWAPS ------------------------ */
+.empty{
+    display: none;
+
+    font-size: var(--fs-sm);
+    font-weight: 300;
+    color: var(--color-tonedown);
+}
 
 
 
@@ -35,7 +43,36 @@ body, #screen-todo, #todo-section{
     gap: 3rem;
 
     height: 75%;
-    width: 36dvw;
+    width: 45dvw;
+    max-width: 570px;
+}
+@media (max-width: 78em) /*MID:    > 1,250*/ {
+    #todo-wrapper{
+        width: 65dvw;
+        max-width: 540px;
+    }
+}
+@media (max-width: 48em) /*TABLET: > 768  */ {
+    #todo-wrapper{
+        gap: 2rem;
+        height: 80%;
+        width: 90dvw;
+        max-width: 500px;
+    }
+}
+@media (max-width: 31em) /*MOBILE: > 498  */ {
+    #todo-wrapper{
+        gap: 2rem;
+
+        height: 85%;
+        width: 90dvw;
+        max-width: none;
+    }
+    #todo-section{
+        padding: 3rem 0 0 0; /* To avoid going under the FIXED header */
+    }
+}
+@media (max-width: 20em) /*MINI:   > 320  */ {
 }
 /* --------------------------- INPUT --------------------------- */
 #input{
@@ -68,6 +105,8 @@ body, #screen-todo, #todo-section{
     color: var(--color-dark);
 }
 #input button{
+    position: relative;
+
     width: 36px;
     height: 36px;
 
@@ -77,12 +116,59 @@ body, #screen-todo, #todo-section{
     border-radius: 50%;
     background-color: var(--color-light);
 }
+#input button::before, #input button::after {
+    content: '';
+    position: absolute;
+    top: 49%;
+    left: 51%;
+    width: 40%;
+    height: 1px;
+    background-color: var(--color-accent);
+}
+#input button::before {
+    transform: translateX(-50%);
+}
+#input button::after {
+    transform: translateX(-50%) rotate(90deg);
+}
+@media (max-width: 78em) /*MID:    > 1,250*/ {
+}
+@media (max-width: 48em) /*TABLET: > 768  */ {
+    #input{
+        gap: 3rem;
+        padding: 1.25rem 1.5rem 1.25rem 3rem;
+    }
+    #input input{
+        font-size: 1.8rem;
+    }
+}
+@media (max-width: 31em) /*MOBILE: > 498  */ {
+    #input{
+        gap: 0;
+    }
+    #input input{
+        flex: 0;
+        width: 180px;
+    }
+}
+@media (max-width: 20em) /*MINI:   > 320  */ {
+    #input{
+        padding: 1.25rem 1.5rem 1.25rem 2.5rem;
+    }
+    #input input{
+        flex: 0;
+        width: 150px;
+        font-size: 1.6rem;
+    }
+}
 /* --------------------------- TASKS --------------------------- */
 /* SECTION */
 #tasks{
-    overflow-y: auto;
+    overflow-y: auto; /* will change on empty */
 
     display: flex;
+    align-items: normal; /* will change on empty */
+    justify-content: center;
     flex: 1;
 
     box-sizing: border-box;
@@ -113,6 +199,7 @@ body, #screen-todo, #todo-section{
 #tasks ul{
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
     gap: 3rem;
 
     width: 100%;
@@ -173,6 +260,46 @@ body, #screen-todo, #todo-section{
 }
 .li-remove::after {
     transform: translateY(-50%) rotate(-45deg);
+}
+@media (max-width: 78em) /*MID:    > 1,250*/ {
+    .li-remove {
+        margin-left: 1rem;
+    }
+}
+@media (max-width: 48em) /*TABLET: > 768  */ {
+    /* UL */
+    #tasks ul{
+        gap: 3.5rem;
+
+        padding: 3rem 2.5rem;
+    }
+    /* LI */
+    #tasks li{
+        column-gap: 2.5rem;
+
+        font-size: 1.5rem;
+    }
+}
+@media (max-width: 31em) /*MOBILE: > 498  */ {
+    #tasks li{
+        column-gap: 1.5rem;
+    }
+    .li-remove {
+        margin-left: 1rem;
+    }
+}
+@media (max-width: 20em) /*MINI:   > 320  */ {
+    #tasks ul{
+        gap: 5rem;
+    }
+    #tasks li{
+        grid-template-columns: auto 1fr;
+        column-gap: 1rem;
+        row-gap: 1rem;
+    }
+    .li-remove {
+        margin-left: 0;
+    }
 }
 
 
