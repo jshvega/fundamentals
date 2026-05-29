@@ -70,24 +70,13 @@
                 <div id="todo-wrapper">
 
                     <div id="input">
-                        <input type="text" placeholder="Write a new task">
-                        <button></button>
+                        <input type="text" placeholder="Write a new task" id="input-field" autocomplete="off">
+                        <button onclick="addTask()"></button>
                     </div>
 
                     <div id="tasks">
-                        <p class="empty">Add new tasks</p>
-                        <ul>
-                            <li class="li-checked">
-                                <div class="li-radio li-radio-checked"></div>
-                                Lorem ipsum dolor sit amet consectetur
-                                <button class="li-remove"></button>
-                            </li>
-                            <li class="">
-                                <div class="li-radio"></div>
-                                Lorem ipsum dolor sit amet consectetur
-                                <button class="li-remove"></button>
-                            </li>
-                        </ul>
+                        <p id="empty">Add new tasks</p>
+                        <ul id="list-container"></ul>
                     </div>
 
                 </div>
