@@ -12,8 +12,8 @@
 |#|Project|Stack|Status|
 |-|-|-|-|
 |01|[Calculator](./calculator)|HTML · CSS · Vanilla JS|Completed|
-|02|[To-Do App](./todo)|Vanilla JS · localStorage|In Progress|
-|03|[Weather Dashboard](./weather)|React · TypeScript · Vite|Not started|
+|02|[To-Do App](./todo)|Vanilla JS · localStorage|Completed|
+|03|[Weather Dashboard](./weather)|React · TypeScript · Vite|In Progress|
 |04|[Movie Searcher](./movies)|Next.js · TypeScript · TanStack Query|Not started|
 |05|[Expense Tracker](./expenses)|Next.js · Supabase · Docker · GitHub Actions|Not started|
 
@@ -73,7 +73,7 @@ Each project folder contains its own README with stack, goals, what was learned,
 
 ## How to run locally
 
-The first two projects are plain HTML/CSS/JS — just open `calculator/index.html` in a browser.
+The first two projects are plain HTML/CSS/JS; for example, just open `calculator/index.html` in a browser.
 
 Projects 3–5 use a build tool. From the relevant subfolder:
 
