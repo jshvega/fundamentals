@@ -2,7 +2,7 @@ const inputField = document.getElementById("input-field")
 const listContainer = document.getElementById("list-container")
 const empty = document.getElementById("empty")
 
-// Populating tasksArr from localStorage on every page load. This one-liner works becuase || [] acts as a safeguard for first-time visits when the key has not yet been created and so getItem would return null.
+// The || [] acts as a safeguard for first-time visits when the key has not yet been created and so getItem would return null.
 let tasksArr = JSON.parse(localStorage.getItem("tasks")) || []
 
 
@@ -16,28 +16,33 @@ function isEmpty(){
     }
 }
 
-function render(){
-
-    listContainer.innerHTML = ''
+function render() {
+    const fragment = document.createDocumentFragment()
 
     tasksArr.forEach((task, index) => {
-        if(task.checked){
-            listContainer.innerHTML += `
-            <li class="li-checked" data-li="li" data-index="${index}">
-                <div class="li-radio li-radio-checked" data-radio="radio"></div>
-                <p data-item="item">${task.task}</p>
-                <button class="li-remove" data-remove="remove"></button>
-            </li> `
-        } else{
-            listContainer.innerHTML += `
-            <li class="" data-li="li" data-index="${index}">
-                <div class="li-radio" data-radio="radio"></div>
-                <p data-item="item">${task.task}</p>
-                <button class="li-remove" data-remove="remove"></button>
-            </li> `
-        }
+        const li = document.createElement('li')
+        li.dataset.li = 'li'
+        li.dataset.index = index
+        li.classList.toggle('li-checked', task.checked)
+
+        const radio = document.createElement('div')
+        radio.className = 'li-radio'
+        radio.dataset.radio = 'radio'
+        radio.classList.toggle('li-radio-checked', task.checked)
+
+        const p = document.createElement('p')
+        p.dataset.item = 'item'
+        p.textContent = task.task
+
+        const button = document.createElement('button')
+        button.className = 'li-remove'
+        button.dataset.remove = 'remove'
+
+        li.append(radio, p, button)
+        fragment.appendChild(li)
     })
 
+    listContainer.replaceChildren(fragment)
 }
 
 function save(){
