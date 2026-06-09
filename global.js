@@ -1,3 +1,12 @@
+// LENIS SCROLL
+if (document.querySelector('script[src*="lenis"]')) {
+  const lenis = new Lenis({ autoRaf: true });
+  lenis.on('scroll', (e) => { console.log(e); });
+}
+
+
+
+
 // CURSOR
 const cursor = document.getElementById('cursor');
 if (cursor) {
