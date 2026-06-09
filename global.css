@@ -163,6 +163,15 @@ h1, h2, h3, h4, p, a {
         display: none;
     }
 }
+/* MOBILE   - Below   500px */
+@media (max-width: 31em) {
+    .btn2{
+        font-size: 1.2rem;
+    }
+    .btn2-arrow{
+        width: 0.9rem;
+    }
+}
 /* Body Template */
 .wrapper-global{
     width: 100dvw;
