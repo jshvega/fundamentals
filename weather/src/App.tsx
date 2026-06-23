@@ -4,7 +4,6 @@ import { getGeocode } from './api'
 
 
 
-
 function App(){
   const cityName = "Tokyo"
 
@@ -19,9 +18,8 @@ function App(){
   if (isError) return <p>Something went wrong</p>
 
   // return
-  return <pre>{JSON.stringify(data, null, 2)}</pre>
+  return (<><pre>{JSON.stringify(data, null, 2)}</pre></>)
 }
-
 
 
 

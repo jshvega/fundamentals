@@ -1,0 +1,70 @@
+html {
+    font-size: 62.5%;  /* now 1rem = 10px (if user default is 16px) */
+}
+
+:root {
+    /* ------------------ RAW PALETTE ------------------ */
+    --parchment:      #F0EBE6;
+    --dust:           #E0DCD7; /* Light Mode Exclusive */
+    --silver:         #AAAAAA; /* Light Mode Exclusive */
+    --dust-grey:      #CCC2B8; /* Dark Mode Exclusive */
+    --grey-olive:     #99918A; /* Dark Mode Exclusive */
+    --charcoal:       #5C5C5C; /* Light Mode Exclusive */
+    --charcoal-brown: #403D39; /* Dark Mode Exclusive */
+    --shadow:         #292828;
+    --ochre:          #CE7800;
+    --walnut:         #6B4818; /* Dark Mode Exclusive */
+    --apricot:        #E6C9A1; /* Light Mode Exclusive */
+    --seaweed:        #46AD8D;
+    --willow-green:   #88BD67;
+    --gold:           #D2B454;
+    --blushed-brick:  #CF4A4A;
+
+    /* ---------------- SEMANTIC ROLES ----------------- */
+    --color-bg:           var(--parchment);
+    --color-type:         var(--shadow);
+    --color-type-muted:   var(--charcoal);
+    --color-type-muted-2: var(--silver);
+    --color-borders:      var(--silver);
+    --color-area-muted:   var(--dust);
+    --color-accent:       var(--ochre);
+    --color-accent-muted: var(--apricot);
+    --color-accent-gn1:   var(--seaweed);
+    --color-accent-gn2:   var(--willow-green);
+    --color-accent-yw:    var(--gold);
+    --color-accent-rd:    var(--blushed-brick);
+
+    /* ------------------- TYPE SCALE ------------------ */
+    --fs-xs:   1.0rem;
+    --fs-sm:   1.2rem;
+    --fs-md:   1.4rem;
+    --fs-lg:   1.6rem;
+    --fs-xl:   2.4rem;
+    --fs-2xl:  3.2rem;
+    --fs-3xl:  5.6rem;
+    --fs-huge: 15rem;
+    /* Font Families */
+    --font-primary: "Zalando Sans", sans-serif;
+    --font-display: "Playfair Display", serif;
+
+    /* ----------------- SPACING SCALE ----------------- */
+    --space-xs:   0.4rem;   /*  4px */
+    --space-sm:   0.8rem;   /*  8px */
+    --space-md:   1.6rem;   /* 16px */
+    --space-lg:   2.4rem;   /* 24px */
+    --space-xl:   3.2rem;   /* 32px */
+    --space-2xl:  4.8rem;   /* 48px */
+
+    /* --------------------- RADII --------------------- */
+    --radius-xs:      4px;
+    --radius-sm:      8px;
+    --radius-md:     10px;
+    --radius-lg:     15px;
+    --radius-total: 500px;
+
+    /* ------------ BREAKPOINTS (docs only) ------------ */
+    /* @media (max-width: 78em) MID:    > 1,250px {} */
+    /* @media (max-width: 48em) TABLET: > 768px   {} */
+    /* @media (max-width: 31em) MOBILE: > 498px   {} */
+    /* @media (max-width: 20em) MINI:   > 320px   {} */
+}
