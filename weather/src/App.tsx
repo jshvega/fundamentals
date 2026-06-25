@@ -2,6 +2,8 @@
 import { useQuery } from "@tanstack/react-query"
 import { getGeocode } from './api'
 
+import CurrentWeather from "./components/CurrentWeather"
+import CloudIcon from "./assets/cloud.svg?react"
 
 
 function App(){
@@ -18,7 +20,13 @@ function App(){
   if (isError) return <p>Something went wrong</p>
 
   // return
-  return (<><pre>{JSON.stringify(data, null, 2)}</pre></>)
+  return (
+    <>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+      
+      <CurrentWeather condition="Broken Clouds" conditionIcon={CloudIcon} temp={24} time="10:12 A.M." wind={4} humidity={48} visibility={1.6}/>
+    </>
+  )
 }
 
 

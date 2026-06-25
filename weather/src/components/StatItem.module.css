@@ -1,0 +1,24 @@
+.statItem{
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.icon{
+    color: var(--color-accent);
+    margin-bottom: var(--space-md);
+}
+
+.value, .label{
+    color: var(--color-type-muted);
+    font-family: var(--font-primary);
+    font-weight: 500;
+}
+.value{
+    font-size: var(--fs-md);
+}
+.label{
+    font-size: var(--fs-xs);
+}

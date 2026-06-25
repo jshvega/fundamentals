@@ -1,0 +1,105 @@
+/* ------------ SHARED ------------ */
+
+.condition,
+.localTime {
+    margin: 0;
+    font-family: var(--font-primary);
+    font-size: var(--fs-sm);
+    font-weight: 400;
+    color: var(--color-type-muted);
+}
+
+.temp,
+.time {
+    margin: 0;
+    font-family: var(--font-primary);
+    font-weight: 400;
+    color: var(--color-type);
+}
+
+
+
+/* ---------- INDIVIDUAL ---------- */
+
+/* TOP LEVEL */
+.currentWx {
+    display: inline-flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    box-sizing: border-box;
+    width: 360px;
+    height: 500px;
+}
+.widgetMain {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: var(--space-md);
+    border: 1px solid var(--color-borders);
+    border-radius: var(--radius-md);
+}
+
+/* LABEL */
+.currentWxLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    padding: var(--space-sm) 0;
+    border: 1px solid var(--color-type);
+    border-radius: var(--radius-total);
+}
+.currentWxLabel span {
+    margin-bottom: 0.1rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--fs-md);
+}
+
+/* CONDITION + TEMP */
+.topGroup {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+.conditionDiv {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+.conditionIcon {
+    width: 1.5rem;
+    color: var(--color-accent);
+}
+.temp {
+    font-size: var(--fs-huge);
+    line-height: 1;
+    letter-spacing: -0.5rem;
+}
+
+/* TIME */
+.timeDiv {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+.time {
+    font-size: var(--fs-2xl);
+    font-weight: 500;
+}
+
+/* STATS STRIP */
+.statItemStrip {
+    display: inline-flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    padding: var(--space-lg) var(--space-2xl);
+    border: 1px solid var(--color-type-muted);
+    border-radius: var(--radius-sm);
+}
