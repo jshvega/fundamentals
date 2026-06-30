@@ -1,9 +1,11 @@
 html {
     font-size: 62.5%;  /* now 1rem = 10px (if user default is 16px) */
+    box-sizing: border-box;
 }
 body { 
     background-color: var(--color-bg);
     margin: 0; 
+    box-sizing: border-box;
 }
 
 :root {
