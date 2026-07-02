@@ -1,4 +1,3 @@
-import type { ComponentType, SVGProps } from "react"
 import styles from './CurrentWeather.module.css'
 
 import StatItem from "./StatItem"
@@ -10,7 +9,7 @@ import DropIcon from "../assets/drop.svg?react"
 
 type CurrentWeatherProps = {
     condition:string,
-    conditionIcon:ComponentType<SVGProps<SVGSVGElement>>
+    conditionIcon:React.ReactNode
     temp:number
     time:string
     wind:number
@@ -18,7 +17,7 @@ type CurrentWeatherProps = {
     visibility:number
 }
 
-export default function CurrentWeather({condition, conditionIcon:ConditionIcon, temp, time, wind, humidity, visibility}:CurrentWeatherProps){
+export default function CurrentWeather({condition, conditionIcon, temp, time, wind, humidity, visibility}:CurrentWeatherProps){
 
     return (
         <div className={styles.currentWx}>
@@ -32,7 +31,7 @@ export default function CurrentWeather({condition, conditionIcon:ConditionIcon, 
                 <div className={styles.topGroup}>
                     <div className={styles.conditionDiv}>
                         <span className={styles.condition}>{condition}</span>
-                        <ConditionIcon className={styles.conditionIcon}/>
+                        <div className={styles.conditionIcon}>{conditionIcon}</div>
                     </div>
 
                     <p className={styles.temp}>{`${temp}°`}</p>
