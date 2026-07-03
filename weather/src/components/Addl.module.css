@@ -1,0 +1,109 @@
+/* ---------- INDIVIDUAL ---------- */
+
+/* GLOBAL */
+.addlWx {
+    display: inline-flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    box-sizing: border-box;
+    width: 750px;
+    height: 320px;
+}
+.widgetMain {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    align-items: center;
+    
+    width: 100%;
+    height: 100%;
+
+    padding: var(--space-md);
+
+    border: 1px solid var(--color-borders);
+    border-radius: var(--radius-md);
+}
+.addlLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    padding: var(--space-sm) 0;
+    border: 1px solid var(--color-type);
+    border-radius: var(--radius-total);
+}
+.addlLabel span {
+    margin-bottom: 0.1rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--fs-md);
+}
+
+
+.card{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+
+    height: 100%;
+
+    padding: var(--space-md);
+
+    border: 1px solid var(--color-borders);
+    border-radius: var(--radius-sm);
+}
+.cardTitle{
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+img{
+    width: 12px;
+    height: 12px;
+}
+.cardTitle p{
+    margin: 0;
+    font-family: var(--font-primary);
+    font-size: var(--fs-xs);
+}
+.infoItem{
+    margin: 0;
+    line-height: 1;
+
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--fs-3xl);
+    color: var(--color-type-muted);
+}
+
+
+
+/* ---------- MEDIA QUERIES ---------- */
+
+@media (max-width: 78em) /* MID:    > 1,250px */ {
+    
+}
+@media (max-width: 31em) /* MOBILE: > 498px */   {
+    .addlWx {
+        width: 90%;
+        height: 500px;
+        --fs-3xl: 4rem;
+    }
+    .widgetMain {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .card{
+        gap: var(--space-lg);
+    }
+}
+@media (max-width: 20em) /* MINI:   > 320px */   {
+    .addlWx {
+        --fs-sm: 1rem;
+        --fs-3xl: 3.5rem;
+    }
+    
+}

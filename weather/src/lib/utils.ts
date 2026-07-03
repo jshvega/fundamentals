@@ -35,6 +35,26 @@ export function formatLocalTime2(dt:number, timezone:number):string{
     return `${hours} ${ampm}`  
 }
 
+export function formatLocalTime3(dt:number, timezone:number):string{
+    const date = new Date((dt+timezone)*1000)
+    const hours = date.getUTCHours()
+    const minutes = date.getUTCMinutes()
+
+    if (minutes < 10)
+        return `${hours}:0${minutes}`
+    else{
+        return `${hours}:${minutes}`
+    }    
+}
+
+export function formatDegs(degs:number):string{
+    
+    const dir = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
+    const index = Math.round(degs/45) % 8
+    return dir[index]
+
+}
+
 export function formatWeekday(dt:number, timezone:number):string{
     const date = new Date((dt+timezone)*1000)
     
