@@ -1,6 +1,7 @@
 import { geocodeSchema } from './schemas/geocodeSchema'
 import { weatherSchema } from './schemas/weatherSchema'
 import { dailySchema } from './schemas/dailySchema'
+import { hourlySchema } from './schemas/hourlySchema'
 import type { Coordinates } from './types'
 const key = import.meta.env.VITE_OWM_KEY
 
@@ -47,9 +48,15 @@ export async function getDaily(coordinates:Coordinates) {
 }
 
 
+export async function getHourly(coordinates:Coordinates) {
+    const url = `https://api.openweathermap.org/data/4.0/onecall/timeline/1h?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${key}`
 
+    const response = await fetch(url)
 
+    if(!response.ok){
+        throw new Error(`API failed: ${response.status}`)
+    }
 
-
-
-
+    const data = await response.json()
+    return hourlySchema.parse(data)
+}

@@ -23,6 +23,18 @@ export function formatLocalTime(dt:number, timezone:number):string{
     }    
 }
 
+export function formatLocalTime2(dt:number, timezone:number):string{
+    const date = new Date((dt+timezone)*1000)
+    let hours = date.getUTCHours()
+
+    const ampm = hours >= 12 ? 'P.M.' : 'A.M.'
+
+    hours = hours % 12
+    hours = hours ? hours : 12
+
+    return `${hours} ${ampm}`  
+}
+
 export function formatWeekday(dt:number, timezone:number):string{
     const date = new Date((dt+timezone)*1000)
     

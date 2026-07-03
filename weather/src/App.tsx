@@ -3,16 +3,20 @@ import { useQuery } from "@tanstack/react-query"
 import { getGeocode } from './api'
 import { getWeather } from './api'
 import { getDaily } from './api'
+import { getHourly } from './api'
 
-import {msToKm, mToKm, formatLocalTime, formatWeekday} from './lib/utils'
+import {msToKm, mToKm, formatLocalTime, formatLocalTime2, formatWeekday} from './lib/utils'
 
 import CurrentWeather from "./components/CurrentWeather"
 import DailyWeather from "./components/DailyForecast"
+import HourlyWeather from "./components/HourlyForecast"
+
 import WeatherIcon from "./components/WeatherIcon"
 
 
 function App(){
-  const cityName = "Mexico City"
+
+  const cityName = "London"
 
 
   /* --- useQuery --- */
@@ -39,20 +43,25 @@ function App(){
     enabled: !!coordinates,
   })
 
+  // DAILY HOURLY
+  const {data:hourlyData} = useQuery({
+    queryKey: ["hourly", coordinates?.lat, coordinates?.lon],
+    queryFn: () => getHourly(coordinates!),
+    enabled: !!coordinates,
+  })
+
 
   /* --- GUARDS --- */
   if (isPending) return <p>Loading...</p>
   if (isError) return <p>Something went wrong</p>
-  if (!dailyData || !weatherData) return <p>Something went wrong</p> // Placeholder. Will polish in Phase 9.
+  if (!dailyData || !weatherData || !hourlyData) return <p>Something went wrong</p> // Placeholder. Will polish in Phase 9.
 
 
   /* --- RETURN --- */
   return (
     <>
  
-      {/* 
-      <pre>{JSON.stringify(dailyData, null, 2)}</pre>
-      */}
+      <pre>{JSON.stringify(hourlyData, null, 2)}</pre>
 
       <CurrentWeather 
         // No mapping function. Mapped inline.
@@ -66,7 +75,7 @@ function App(){
       />
 
       <DailyWeather 
-        day={formatWeekday(dailyData?.data[0].dt, dailyData?.timezone_offset)}
+        day={formatWeekday(dailyData.data[0].dt, dailyData?.timezone_offset)}
         temp={Math.round(dailyData.data[0].temp.day)}
         max={Math.round(dailyData.data[0].temp.max)} 
         min={Math.round(dailyData.data[0].temp.min)}
@@ -76,6 +85,14 @@ function App(){
           temp: Math.round(day.temp.day),
           max: Math.round(day.temp.max),
           min: Math.round(day.temp.min),
+        }))}
+      />
+
+      <HourlyWeather 
+        items={hourlyData.data.slice(0, 12).map(item=>({
+          time: formatLocalTime2(item.dt, hourlyData?.timezone_offset),
+          icon:<WeatherIcon iconCode={item.weather[0].icon}/>,
+          temp: Math.round(item.temp),
         }))}
       />
 
