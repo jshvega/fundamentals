@@ -22,3 +22,9 @@ export function formatLocalTime(dt:number, timezone:number):string{
         return `${hours}:${minutes} ${ampm}`
     }    
 }
+
+export function formatWeekday(dt:number, timezone:number):string{
+    const date = new Date((dt+timezone)*1000)
+    
+    return date.toLocaleDateString("en-US", {weekday:"short", timeZone:"UTC"})
+}

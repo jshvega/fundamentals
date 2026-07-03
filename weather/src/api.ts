@@ -1,6 +1,6 @@
 import { geocodeSchema } from './schemas/geocodeSchema'
 import { weatherSchema } from './schemas/weatherSchema'
-import { forecastSchema } from './schemas/forecastSchema'
+import { dailySchema } from './schemas/dailySchema'
 import type { Coordinates } from './types'
 const key = import.meta.env.VITE_OWM_KEY
 
@@ -33,8 +33,8 @@ export async function getWeather(coordinates:Coordinates) {
 }
 
 
-export async function getForecast(coordinates:Coordinates) {
-    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${key}`
+export async function getDaily(coordinates:Coordinates) {
+    const url = `https://api.openweathermap.org/data/4.0/onecall/timeline/1day?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${key}`
 
     const response = await fetch(url)
 
@@ -43,5 +43,13 @@ export async function getForecast(coordinates:Coordinates) {
     }
 
     const data = await response.json()
-    return forecastSchema.parse(data)
+    return dailySchema.parse(data)
 }
+
+
+
+
+
+
+
+
