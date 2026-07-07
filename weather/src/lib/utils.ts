@@ -60,3 +60,23 @@ export function formatWeekday(dt:number, timezone:number):string{
     
     return date.toLocaleDateString("en-US", {weekday:"short", timeZone:"UTC"})
 }
+
+
+/* AQI CARDS UTILS */
+const pollutantThresholds:Record<string, number[]> = {
+    aqi: [1, 2, 3, 4, 5],
+    pm2_5: [10, 25, 50, 75, Infinity],
+    pm10: [20, 50, 100, 200, Infinity],
+    o3: [60, 100, 140, 180, Infinity],
+    no2: [40, 70, 150, 200, Infinity],
+    co: [4400, 9400, 12400, 15400, Infinity],
+} 
+
+export function sliderPercent(value:number, max:number) {
+    const percent = value / max * 100
+    return Math.min(percent, 100)
+}
+
+export function activeBand(value:number, pollutant:string) {
+    return pollutantThresholds[pollutant].findIndex(limit => value <= limit)
+}

@@ -1,0 +1,138 @@
+/* GLOBAL */
+.airWX{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: var(--space-lg);
+
+    width: 360px;
+    height: 100dvh;
+
+    margin-left: auto;
+    padding: var(--space-md);
+    padding-top: var(--space-lg);
+
+    border-left: 1px solid var(--color-borders);
+
+    font-family: var(--font-primary);
+    color: var(--color-type-muted);
+}
+.airLabel{
+    display: none;
+}
+.sidebarTitle{
+    margin: 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: var(--fs-xl);
+}
+.widgetMain{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-sm);
+
+    overflow-y: auto;
+
+    flex: 1;
+    max-height: 800px;
+    width: 100%;
+}
+
+/* CARD */
+.componentCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+
+    padding: var(--space-m);
+
+    border: 1px solid var(--color-borders);
+    border-radius: var(--radius-sm);
+}
+.componentCard p {
+    margin: 0;
+}
+
+/* SHARED */
+.top, .sliderVals, .bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* TOP */
+.top p {
+    font-size: var(--fs-md);  
+    font-weight: 500;
+}
+
+/* MID */
+.mid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    width: 100%;    
+}
+.mid p {
+    font-size: var(--fs-xs);  
+}
+.slider {
+    width: 100%;
+    height: 4px;
+    border-radius: 500px;
+    background-color: var(--color-area-muted);
+}
+
+/* BOTTOM */
+.band {
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-xs);
+    background-color: var(--color-area-muted);
+    font-size: var(--fs-xs);
+    font-weight: 500;
+}
+.good {
+    background-color: var(--color-accent-gn1);
+    color: var(--color-bg);
+}
+.fair {
+    background-color: var(--color-accent-gn2);
+    color: var(--color-bg);
+}
+.moderate {
+    background-color: var(--color-accent-yw);
+}
+.poor {
+    background-color: var(--color-accent-accent);
+    color: var(--color-bg);
+}
+.veryPoor {
+    background-color: var(--color-accent-rd);
+    color: var(--color-bg);
+}
+
+
+
+
+/* ---------- MEDIA QUERIES ---------- */
+
+@media (max-width: 78em) /* MID:    > 1,250px */ {
+    
+}
+@media (max-width: 31em) /* MOBILE: > 498px */   {
+    .addlWx {
+        --fs-3xl: 4rem;
+    }
+}
+@media (max-width: 20em) /* MINI:   > 320px */   {
+    .addlWx {
+        --fs-sm: 1rem;
+        --fs-3xl: 3.5rem;
+    }
+    
+}

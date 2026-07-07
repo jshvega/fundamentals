@@ -3,6 +3,7 @@ import { weatherSchema } from './schemas/weatherSchema'
 import { dailySchema } from './schemas/dailySchema'
 import { hourlySchema } from './schemas/hourlySchema'
 import { addlSchema } from './schemas/addlSchema'
+import { airpollutionSchema } from './schemas/airpollutionSchema'
 import type { Coordinates } from './types'
 const key = import.meta.env.VITE_OWM_KEY
 
@@ -73,4 +74,17 @@ export async function getAddl(coordinates:Coordinates) {
 
     const data = await response.json()
     return addlSchema.parse(data)
+}
+
+export async function getAirPollution(coordinates:Coordinates) {
+    const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${key}`
+
+    const response = await fetch(url)
+
+    if(!response.ok){
+        throw new Error(`API failed: ${response.status}`)
+    }
+
+    const data = await response.json()
+    return airpollutionSchema.parse(data)
 }

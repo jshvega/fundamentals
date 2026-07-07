@@ -5,21 +5,23 @@ import { getWeather } from './api'
 import { getDaily } from './api'
 import { getHourly } from './api'
 import { getAddl } from "./api"
+import { getAirPollution } from "./api"
 
-import {msToKm, mToKm, formatLocalTime, formatLocalTime3, formatDegs, formatWeekday} from './lib/utils'
-// Missing formatLocalTime2
+import {msToKm, mToKm, formatLocalTime, formatWeekday} from './lib/utils'
+// formatLocalTime2, formatLocalTime3, formatDegs
 
 import CurrentWeather from "./components/CurrentWeather"
 import DailyWeather from "./components/DailyForecast"
 // import HourlyWeather from "./components/HourlyForecast"
-import Addl from "./components/Addl"
+// import Addl from "./components/Addl"
+import Aqi from "./components/Aqi"
 
 import WeatherIcon from "./components/WeatherIcon"
 
 
 function App(){
 
-  const cityName = "London"
+  const cityName = "Mexico City"
 
 
   /* --- useQuery --- */
@@ -60,18 +62,25 @@ function App(){
     enabled: !!coordinates,
   })
 
+  // AIR POLLUTION
+   const {data:airData} = useQuery({
+    queryKey: ["air_pollution", coordinates?.lat, coordinates?.lon],
+    queryFn: () => getAirPollution(coordinates!),
+    enabled: !!coordinates,
+  })
+
 
   /* --- GUARDS --- */
   if (isPending) return <p>Loading...</p>
   if (isError) return <p>Something went wrong</p>
-  if (!dailyData || !weatherData || !hourlyData || !addlData) return <p>Something went wrong</p> // Placeholder. Will polish in Phase 9.
+  if (!dailyData || !weatherData || !hourlyData || !addlData || !airData) return <p>Something went wrong</p> // Placeholder. Will polish in Phase 9.
 
 
   /* --- RETURN --- */
   return (
     <>
  
-      <pre>{JSON.stringify(addlData, null, 2)}</pre>
+      <pre>{JSON.stringify(airData, null, 2)}</pre>
 
       <CurrentWeather 
         // No mapping function. Mapped inline.
@@ -108,6 +117,7 @@ function App(){
       />
       */}
 
+      {/*
       <Addl 
         preassure={addlData.data[0].pressure}
         cloudiness={addlData.data[0].clouds}
@@ -115,6 +125,16 @@ function App(){
         winddeg={formatDegs(addlData.data[0].wind_deg)}
         sunset={formatLocalTime3(addlData.data[0].sunset, addlData.timezone_offset)}
         sunrise={formatLocalTime3(addlData.data[0].sunrise, addlData.timezone_offset)}
+      />
+      */}
+
+      <Aqi
+        aqi={airData.list[0].main.aqi}
+        pmtwo={Math.round(airData.list[0].components.pm2_5)}
+        pmten={Math.round(airData.list[0].components.pm10)}
+        othree={Math.round(airData.list[0].components.o3)}
+        notwo={Math.round(airData.list[0].components.no2)}
+        co={Math.round(airData.list[0].components.co)}
       />
 
     </>
