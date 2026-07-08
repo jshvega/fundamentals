@@ -7,21 +7,25 @@ import { getHourly } from './api'
 import { getAddl } from "./api"
 import { getAirPollution } from "./api"
 
-import {msToKm, mToKm, formatLocalTime, formatWeekday} from './lib/utils'
-// formatLocalTime2, formatLocalTime3, formatDegs
+import {formatWind, formatVisibility, formatTemp, formatTemp2, formatLocalTime, formatLocalTime2, formatWeekday} from './lib/utils'
+// formatLocalTime3, formatDegs
 
 import CurrentWeather from "./components/CurrentWeather"
 import DailyWeather from "./components/DailyForecast"
-// import HourlyWeather from "./components/HourlyForecast"
+import HourlyWeather from "./components/HourlyForecast"
 // import Addl from "./components/Addl"
-import Aqi from "./components/Aqi"
+// import Aqi from "./components/Aqi"
+import LocationDropdown  from "./components/LocationDropdown"
+import UnitsDropdown  from "./components/UnitsDropdown"
 
 import WeatherIcon from "./components/WeatherIcon"
+import { useState } from "react"
 
 
 function App(){
 
-  const cityName = "Mexico City"
+  const [city, setCity] = useState("Mexico City")
+  const [units, setUnits] = useState<"metric" | "imperial">("metric")
 
 
   /* --- useQuery --- */
@@ -29,8 +33,8 @@ function App(){
   // GEOCODE
   // useQuery: the hook that runs a fetch function and hands back its state
   const {data:geoData, isPending, isError} = useQuery({
-    queryKey: ["geocode", cityName], //unique label for this query's cached result
-    queryFn: () => getGeocode(cityName) //the function that does the fetching
+    queryKey: ["geocode", city], //unique label for this query's cached result
+    queryFn: () => getGeocode(city) //the function that does the fetching
   })
   const coordinates = geoData?.[0]
 
@@ -80,42 +84,44 @@ function App(){
   return (
     <>
  
-      <pre>{JSON.stringify(airData, null, 2)}</pre>
+      {/*<pre>{JSON.stringify(airData, null, 2)}</pre>*/}
 
       <CurrentWeather 
         // No mapping function. Mapped inline.
         condition={weatherData.weather[0].description}
         conditionIcon={<WeatherIcon iconCode={weatherData.weather[0].icon}/>}
-        temp={Math.round(weatherData.main.temp)} 
+        temp={formatTemp2(weatherData.main.temp, units)} 
         time={formatLocalTime(weatherData.dt, weatherData.timezone)} 
-        wind={msToKm(weatherData.wind.speed)} 
+        wind={formatWind(weatherData.wind.speed, units)} 
         humidity={weatherData.main.humidity} 
-        visibility={mToKm(weatherData.visibility)}
+        visibility={formatVisibility(weatherData.visibility, units)}
       />
 
       <DailyWeather 
         day={formatWeekday(dailyData.data[0].dt, dailyData?.timezone_offset)}
-        temp={Math.round(dailyData.data[0].temp.day)}
-        max={Math.round(dailyData.data[0].temp.max)} 
-        min={Math.round(dailyData.data[0].temp.min)}
+        temp={formatTemp(dailyData.data[0].temp.day, units)}
+        max={formatTemp(dailyData.data[0].temp.max, units)} 
+        min={formatTemp(dailyData.data[0].temp.min, units)}
 
         strips={dailyData.data.slice(1, 6).map(day=>({
           day: formatWeekday(day.dt, dailyData?.timezone_offset),
-          temp: Math.round(day.temp.day),
-          max: Math.round(day.temp.max),
-          min: Math.round(day.temp.min),
+          temp: formatTemp(day.temp.day, units),
+          max: formatTemp(day.temp.max, units),
+          min: formatTemp(day.temp.min, units),
         }))}
       />
 
-      {/*
       <HourlyWeather 
         items={hourlyData.data.slice(0, 12).map(item=>({
           time: formatLocalTime2(item.dt, hourlyData?.timezone_offset),
           icon:<WeatherIcon iconCode={item.weather[0].icon}/>,
-          temp: Math.round(item.temp),
+          temp: formatTemp(item.temp, units),
         }))}
       />
-      */}
+
+      <LocationDropdown current={city} onChange={setCity}/>
+
+      <UnitsDropdown current={units} onChange={setUnits}/>
 
       {/*
       <Addl 
@@ -128,6 +134,7 @@ function App(){
       />
       */}
 
+      {/*
       <Aqi
         aqi={airData.list[0].main.aqi}
         pmtwo={Math.round(airData.list[0].components.pm2_5)}
@@ -136,6 +143,7 @@ function App(){
         notwo={Math.round(airData.list[0].components.no2)}
         co={Math.round(airData.list[0].components.co)}
       />
+      */}
 
     </>
   )

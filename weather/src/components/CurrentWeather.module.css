@@ -1,12 +1,19 @@
 /* ------------ SHARED ------------ */
 
-.condition,
-.localTime {
+.condition {
     margin: 0;
     font-family: var(--font-primary);
     font-size: var(--fs-sm);
     font-weight: 400;
     text-transform: capitalize;
+    color: var(--color-type-muted);
+}
+
+.localTime {
+    margin: 0;
+    font-family: var(--font-primary);
+    font-size: var(--fs-sm);
+    font-weight: 400;
     color: var(--color-type-muted);
 }
 

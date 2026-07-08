@@ -1,0 +1,22 @@
+.component{
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-m);
+}
+.label, .dropdown{
+    font-family: var(--font-primary);
+    font-size: var(--fs-lg);
+    color: var(--color-type-muted);
+}
+.label{
+    font-weight: 500;
+}
+.dropdown{
+    padding: var(--space-sm);
+
+    background-color: var(--color-bg);
+    border-color: var(--color-borders);
+    border-radius: var(--radius-sm);
+
+    font-weight: 400;
+}

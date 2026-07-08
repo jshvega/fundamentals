@@ -10,11 +10,11 @@ import DropIcon from "../assets/drop.svg?react"
 type CurrentWeatherProps = {
     condition:string,
     conditionIcon:React.ReactNode
-    temp:number
+    temp:string
     time:string
-    wind:number
+    wind:string
     humidity:number
-    visibility:number
+    visibility:string
 }
 
 export default function CurrentWeather({condition, conditionIcon, temp, time, wind, humidity, visibility}:CurrentWeatherProps){
@@ -38,14 +38,14 @@ export default function CurrentWeather({condition, conditionIcon, temp, time, wi
                 </div>
 
                 <div className={styles.timeDiv}>
-                    <span className={styles.localTime}>Local Time</span>
+                    <span className={styles.localTime}>As of:</span>
                     <span className={styles.time}>{time}</span>
                 </div>
 
                 <div className={styles.statItemStrip}>
-                    <StatItem icon={WindIcon} value={`${wind}km/h`} label="Wind" />
+                    <StatItem icon={WindIcon} value={`${wind}`} label="Wind" />
                     <StatItem icon={DropIcon} value={`${humidity}%`} label="Humidity" />
-                    <StatItem icon={EyeIcon} value={`${visibility}km`} label="Visibility" />
+                    <StatItem icon={EyeIcon} value={`${visibility}`} label="Visibility" />
                 </div>
 
             </div>

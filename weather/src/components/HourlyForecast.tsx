@@ -4,7 +4,7 @@ import styles from './HourlyForecast.module.css'
 type Item = {
     time:string
     icon:React.ReactNode
-    temp:number
+    temp:string
 }
 
 type Props = {
@@ -27,7 +27,7 @@ export default function HourlyWeather({items}:Props){
                     <div className={styles.itemCard}>
                         <p className={styles.type}>{item.time}</p>
                         <div className={styles.icon}>{item.icon}</div>
-                        <p className={styles.type}>{`${item.temp}°`}</p>
+                        <p className={styles.type}>{`${item.temp}`}</p>
                     </div>
                 ))}
 

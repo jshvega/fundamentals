@@ -1,11 +1,4 @@
-export function msToKm(ms:number):number{
-    return Math.round(ms * 3.6)
-}
-
-export function mToKm(meters:number):number{
-    return Math.round(meters / 1000 * 10) / 10
-}
-
+/* FORMAT */
 export function formatLocalTime(dt:number, timezone:number):string{
     const date = new Date((dt+timezone)*1000)
     let hours = date.getUTCHours()
@@ -22,7 +15,6 @@ export function formatLocalTime(dt:number, timezone:number):string{
         return `${hours}:${minutes} ${ampm}`
     }    
 }
-
 export function formatLocalTime2(dt:number, timezone:number):string{
     const date = new Date((dt+timezone)*1000)
     let hours = date.getUTCHours()
@@ -34,7 +26,6 @@ export function formatLocalTime2(dt:number, timezone:number):string{
 
     return `${hours} ${ampm}`  
 }
-
 export function formatLocalTime3(dt:number, timezone:number):string{
     const date = new Date((dt+timezone)*1000)
     const hours = date.getUTCHours()
@@ -46,7 +37,6 @@ export function formatLocalTime3(dt:number, timezone:number):string{
         return `${hours}:${minutes}`
     }    
 }
-
 export function formatDegs(degs:number):string{
     
     const dir = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
@@ -54,7 +44,6 @@ export function formatDegs(degs:number):string{
     return dir[index]
 
 }
-
 export function formatWeekday(dt:number, timezone:number):string{
     const date = new Date((dt+timezone)*1000)
     
@@ -71,12 +60,49 @@ const pollutantThresholds:Record<string, number[]> = {
     no2: [40, 70, 150, 200, Infinity],
     co: [4400, 9400, 12400, 15400, Infinity],
 } 
-
 export function activeBand(value:number, pollutant:string) {
     return pollutantThresholds[pollutant].findIndex(limit => value <= limit)
 }
-
 export function sliderPercent(value:number, max:number) {
     const percent = value / max * 100
     return Math.min(percent, 100)
+}
+
+
+/* UNIT CONVERSIONS */
+function msToKmh(ms:number):number{
+    return Math.round(ms * 3.6)
+}
+function msToMph(ms:number):number{
+    return Math.round(ms * 2.23693629)
+}
+function mToKm(meters:number):number{
+    return Math.round((meters / 1000) * 10) / 10
+}
+function mToMiles(meters:number):number{
+    return Math.round((meters / 1609.344) * 10) / 10
+}
+function cToF(celsius: number): number {
+    return Math.round(((celsius * 9 / 5) + 32) * 10) / 10
+}
+/* PICKER FUNCTIONS */
+export function formatWind(ms:number, units:"metric"|"imperial"):string{
+    return units === "metric" ? 
+        `${msToKmh(ms)} km/h` 
+        : `${msToMph(ms)} mph`
+}
+export function formatVisibility(meters:number, units:"metric"|"imperial"):string{
+    return units === "metric" ? 
+        `${mToKm(meters)} km` 
+        : `${mToMiles(meters)} miles`
+}
+export function formatTemp(celsius:number, units:"metric"|"imperial"):string{
+    return units === "imperial" ? 
+        `${Math.round(cToF(celsius))} °F` 
+        : `${Math.round(celsius)} °C`
+}
+export function formatTemp2(celsius:number, units:"metric"|"imperial"):string{
+    return units === "imperial" ? 
+        `${Math.round(cToF(celsius))}`
+        : `${Math.round(celsius)}`
 }
