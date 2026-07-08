@@ -87,6 +87,13 @@
     border-radius: 500px;
     background-color: var(--color-area-muted);
 }
+.fill{
+    width: 50%;
+    height: 4px;
+    border-radius: 500px;
+    background-color: var(--color-borders);
+}
+
 
 /* BOTTOM */
 .band {
@@ -122,17 +129,88 @@
 /* ---------- MEDIA QUERIES ---------- */
 
 @media (max-width: 78em) /* MID:    > 1,250px */ {
-    
+    /*RESET*/
+    .airWX,
+    .widgetMain{
+        all: unset;
+    }
+
+    /*BREAKPOINT*/
+    .airWX {
+        display: inline-flex;
+        flex-direction: column;
+        gap: var(--space-md);
+        box-sizing: border-box;
+        width: 750px;
+        height: 320px;
+
+        font-family: var(--font-primary);
+        color: var(--color-type-muted);
+    }
+    .widgetMain {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+
+        width: 100%;
+        height: auto;
+
+        box-sizing: border-box;
+        padding: var(--space-md);
+        padding-bottom: var(--space-lg);
+        gap: var(--space-md);
+
+        border: 1px solid var(--color-borders);
+        border-radius: var(--radius-md);
+    }
+    .airLabel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        width: 100%;
+        padding: var(--space-sm) 0;
+        border: 1px solid var(--color-type);
+        border-radius: var(--radius-total);
+    }
+    .airLabel span {
+        margin-bottom: 0.1rem;
+        font-family: var(--font-display);
+        font-style: italic;
+        font-size: var(--fs-md);
+        color: var(--color-type);
+    }
+    .sidebarTitle{
+        display: none;
+    }
+    .componentCard{
+        min-width: 40%;
+        gap: var(--space-lg);
+    }
+    .mid p {
+        font-size: var(--fs-sm);  
+    }
+}
+@media (max-width: 48em) /* TABLET: > 768px */   {
+    .componentCard{
+        min-width: 50%;
+    }
 }
 @media (max-width: 31em) /* MOBILE: > 498px */   {
-    .addlWx {
-        --fs-3xl: 4rem;
+    .airWX {
+        width: 90%;
+        --space-sm: 0.8rem;
+    }
+    .componentCard{
+        min-width: 85%;
     }
 }
 @media (max-width: 20em) /* MINI:   > 320px */   {
-    .addlWx {
+    .airWX {
         --fs-sm: 1rem;
         --fs-3xl: 3.5rem;
     }
-    
+    .componentCard{
+        min-width: 110%;
+    }
 }

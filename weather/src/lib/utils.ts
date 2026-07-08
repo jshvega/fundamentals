@@ -72,11 +72,11 @@ const pollutantThresholds:Record<string, number[]> = {
     co: [4400, 9400, 12400, 15400, Infinity],
 } 
 
+export function activeBand(value:number, pollutant:string) {
+    return pollutantThresholds[pollutant].findIndex(limit => value <= limit)
+}
+
 export function sliderPercent(value:number, max:number) {
     const percent = value / max * 100
     return Math.min(percent, 100)
-}
-
-export function activeBand(value:number, pollutant:string) {
-    return pollutantThresholds[pollutant].findIndex(limit => value <= limit)
 }

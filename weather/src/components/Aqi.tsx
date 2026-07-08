@@ -1,5 +1,5 @@
 import styles from './Aqi.module.css'
-import { activeBand } from '../lib/utils'
+import { activeBand, sliderPercent } from '../lib/utils'
 
 
 type Props = {
@@ -45,7 +45,9 @@ export default function AirPollution({aqi, pmtwo, pmten, othree, notwo, co}:Prop
                             <p>{p.value}</p>
                         </div>
                         <div className={styles.mid}>
-                            {/* Slider */}
+                            <div className={styles.slider}>
+                                <div className={styles.fill} style={{width: `${sliderPercent(p.value, p.max)}%`}}></div>
+                            </div>
                             <div className={styles.sliderVals}>
                                 <p>0</p>
                                 <p>{p.max}</p>
