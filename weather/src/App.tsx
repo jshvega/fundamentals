@@ -17,6 +17,7 @@ import HourlyWeather from "./components/HourlyForecast"
 // import Aqi from "./components/Aqi"
 import LocationDropdown  from "./components/LocationDropdown"
 import UnitsDropdown  from "./components/UnitsDropdown"
+import Map from "./components/Map"
 
 import WeatherIcon from "./components/WeatherIcon"
 import { useState } from "react"
@@ -77,7 +78,7 @@ function App(){
   /* --- GUARDS --- */
   if (isPending) return <p>Loading...</p>
   if (isError) return <p>Something went wrong</p>
-  if (!dailyData || !weatherData || !hourlyData || !addlData || !airData) return <p>Something went wrong</p> // Placeholder. Will polish in Phase 9.
+  if (!dailyData || !weatherData || !hourlyData || !addlData || !airData || !coordinates) return <p>Something went wrong</p> // Placeholder. Will polish in Phase 9.
 
 
   /* --- RETURN --- */
@@ -86,6 +87,7 @@ function App(){
  
       {/*<pre>{JSON.stringify(airData, null, 2)}</pre>*/}
 
+      {/*
       <CurrentWeather 
         // No mapping function. Mapped inline.
         condition={weatherData.weather[0].description}
@@ -118,10 +120,13 @@ function App(){
           temp: formatTemp(item.temp, units),
         }))}
       />
+      */}
 
       <LocationDropdown current={city} onChange={setCity}/>
 
       <UnitsDropdown current={units} onChange={setUnits}/>
+
+      <Map coordinates={coordinates}/>
 
       {/*
       <Addl 
