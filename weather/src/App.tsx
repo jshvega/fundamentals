@@ -1,5 +1,6 @@
-// import { useState } from 'react'
+import { useState } from 'react'
 import { useQuery } from "@tanstack/react-query"
+
 import { getGeocode } from './api'
 import { getWeather } from './api'
 import { getDaily } from './api'
@@ -10,6 +11,8 @@ import { getAirPollution } from "./api"
 import {formatWind, formatVisibility, formatTemp, formatTemp2, formatLocalTime, formatLocalTime2, formatWeekday} from './lib/utils'
 // formatLocalTime3, formatDegs
 
+import type { MapType } from './types'
+
 import CurrentWeather from "./components/CurrentWeather"
 import DailyWeather from "./components/DailyForecast"
 import HourlyWeather from "./components/HourlyForecast"
@@ -17,57 +20,51 @@ import HourlyWeather from "./components/HourlyForecast"
 // import Aqi from "./components/Aqi"
 import LocationDropdown  from "./components/LocationDropdown"
 import UnitsDropdown  from "./components/UnitsDropdown"
+import TypeDropdown from "./components/TypeDropdown"
 import Map from "./components/Map"
-
 import WeatherIcon from "./components/WeatherIcon"
-import { useState } from "react"
 
 
 function App(){
 
+  /* ---  USE SATES --- */
   const [city, setCity] = useState("Mexico City")
   const [units, setUnits] = useState<"metric" | "imperial">("metric")
+  const [mapType, setMapType] = useState<MapType>("precipitation_new")
 
 
-  /* --- useQuery --- */
-
-  // GEOCODE
-  // useQuery: the hook that runs a fetch function and hands back its state
-  const {data:geoData, isPending, isError} = useQuery({
+  /* --- USEQUERY --- */
+  // Geocode
+  const {data:geoData, isPending, isError} = useQuery({ // useQuery: the hook that runs a fetch function and hands back its state
     queryKey: ["geocode", city], //unique label for this query's cached result
     queryFn: () => getGeocode(city) //the function that does the fetching
   })
   const coordinates = geoData?.[0]
-
-  // CURRENT WEATHER
+  // Current weather
   const {data:weatherData} = useQuery({
     queryKey: ["weather", coordinates?.lat, coordinates?.lon],
     queryFn: () => getWeather(coordinates!),
     enabled: !!coordinates,
   })
-
-  // DAILY FORECAST
+  // Daily forecast
   const {data:dailyData} = useQuery({
     queryKey: ["daily", coordinates?.lat, coordinates?.lon],
     queryFn: () => getDaily(coordinates!),
     enabled: !!coordinates,
   })
-
-  // DAILY HOURLY
+  // Daily hourly
   const {data:hourlyData} = useQuery({
     queryKey: ["hourly", coordinates?.lat, coordinates?.lon],
     queryFn: () => getHourly(coordinates!),
     enabled: !!coordinates,
   })
-
-  // ADDL INFO
+  // Addl info
   const {data:addlData} = useQuery({
     queryKey: ["addl", coordinates?.lat, coordinates?.lon],
     queryFn: () => getAddl(coordinates!),
     enabled: !!coordinates,
   })
-
-  // AIR POLLUTION
+  // Air pollution
    const {data:airData} = useQuery({
     queryKey: ["air_pollution", coordinates?.lat, coordinates?.lon],
     queryFn: () => getAirPollution(coordinates!),
@@ -126,7 +123,9 @@ function App(){
 
       <UnitsDropdown current={units} onChange={setUnits}/>
 
-      <Map coordinates={coordinates}/>
+      <TypeDropdown current={mapType} onChange={setMapType}/>
+
+      <Map coordinates={coordinates} type={mapType}/>
 
       {/*
       <Addl 
