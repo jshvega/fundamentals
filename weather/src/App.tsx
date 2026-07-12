@@ -1,27 +1,41 @@
+// React
 import { useState } from 'react'
 import { useQuery } from "@tanstack/react-query"
 
-import { getGeocode } from './api'
-import { getWeather } from './api'
-import { getDaily } from './api'
-import { getHourly } from './api'
-import { getAddl } from "./api"
-import { getAirPollution } from "./api"
+// API fns
+import { 
+  getGeocode, 
+  getWeather, 
+  getDaily,
+  getHourly, 
+  getAddl, 
+  getAirPollution 
+} from './api'
 
-import {formatWind, formatVisibility, formatTemp, formatTemp2, formatLocalTime, formatLocalTime2, formatWeekday} from './lib/utils'
-// formatLocalTime3, formatDegs
+// Utils
+import {
+  formatWind, 
+  formatVisibility, 
+  formatTemp, formatDegs, 
+  formatTemp2, formatLocalTime, 
+  formatLocalTime2, 
+  formatLocalTime3, 
+  formatWeekday
+} from './lib/utils'
 
+// Types
 import type { MapType } from './types'
 
+// Components
 import CurrentWeather from "./components/CurrentWeather"
 import DailyWeather from "./components/DailyForecast"
 import HourlyWeather from "./components/HourlyForecast"
-// import Addl from "./components/Addl"
-// import Aqi from "./components/Aqi"
+import Addl from "./components/Addl"
+import Aqi from "./components/Aqi"
+import Map from "./components/Map"
 import LocationDropdown  from "./components/LocationDropdown"
 import UnitsDropdown  from "./components/UnitsDropdown"
 import TypeDropdown from "./components/TypeDropdown"
-import Map from "./components/Map"
 import WeatherIcon from "./components/WeatherIcon"
 
 
@@ -152,7 +166,5 @@ function App(){
     </>
   )
 }
-
-
 
 export default App

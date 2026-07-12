@@ -1,13 +1,25 @@
 import 'leaflet/dist/leaflet.css'
 import styles from './Map.module.css'
-import { MapContainer, TileLayer } from "react-leaflet"
+import { MapContainer, TileLayer, useMap } from "react-leaflet"
 import MapLegend from './MapLegend'
 import type { Coordinates, MapType } from '../types'
+import { useEffect } from 'react'
 const key = import.meta.env.VITE_OWM_KEY
 
 type Props = {
     coordinates:Coordinates
     type:MapType
+}
+
+function RecenterMap({lat, lon}:Coordinates){
+
+    const map = useMap()
+
+    useEffect(() => {
+        map.setView([lat, lon], 7)
+    }, [lat, lon, map])
+
+    return null
 }
 
 export default function Map({coordinates, type}:Props){
@@ -33,10 +45,15 @@ export default function Map({coordinates, type}:Props){
                     /> */}
 
                     {/*OVERLAYS*/}
-                    <TileLayer 
+                    <TileLayer
                         key={type} 
                         url={`https://tile.openweathermap.org/map/${type}/{z}/{x}/{y}.png?appid=${key}`}
                         attribution='&copy; <a href="https://openweathermap.org">OpenWeatherMap</a>'
+                    />
+
+                    <RecenterMap 
+                        lat={coordinates.lat}
+                        lon={coordinates.lon}
                     />
 
                 </MapContainer>

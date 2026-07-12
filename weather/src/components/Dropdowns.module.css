@@ -5,7 +5,7 @@
 }
 .label, .dropdown{
     font-family: var(--font-primary);
-    font-size: var(--fs-lg);
+    font-size: var(--fs-md);
     color: var(--color-type-muted);
 }
 .label{
