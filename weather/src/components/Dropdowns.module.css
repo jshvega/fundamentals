@@ -9,6 +9,7 @@
     color: var(--color-type-muted);
 }
 .label{
+    white-space: nowrap;
     font-weight: 500;
 }
 .dropdown{
@@ -19,4 +20,16 @@
     border-radius: var(--radius-sm);
 
     font-weight: 400;
+}
+
+@media (max-width: 42em) /* --- :   > 498px */   {
+    .component{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: var(--space-sm);
+    }
+    .dropdown{
+        width: 100%;
+    }
 }

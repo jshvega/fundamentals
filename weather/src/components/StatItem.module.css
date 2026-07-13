@@ -3,12 +3,12 @@
     width: fit-content;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
 }
 
 .icon{
     color: var(--color-accent);
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-m);
 }
 
 .value, .label{

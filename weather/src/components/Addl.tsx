@@ -34,7 +34,9 @@ export default function HourlyWeather({preassure, cloudiness, uv, winddeg, sunse
                         <p>Preassure hPa</p>
                         <img src={PreassureIcon} alt="Preassure Icon" />
                     </div>
-                    <p className={styles.infoItem}>{preassure}</p>
+                    <div className={styles.infoContainer}>
+                        <p className={styles.infoItem}>{preassure}</p>
+                    </div>
                 </div>
 
                 <div className={styles.card}>
@@ -42,7 +44,9 @@ export default function HourlyWeather({preassure, cloudiness, uv, winddeg, sunse
                         <p>Cloudiness</p>
                         <img src={CloudIcon} alt=" Cloud Icon" />
                     </div>
-                    <p className={styles.infoItem}>{`${cloudiness}%`}</p>
+                    <div className={styles.infoContainer}>
+                        <p className={styles.infoItem}>{`${cloudiness}%`}</p>
+                    </div>
                 </div>
 
                 <div className={styles.card}>
@@ -50,7 +54,9 @@ export default function HourlyWeather({preassure, cloudiness, uv, winddeg, sunse
                         <p>UV Index</p>
                         <img src={UviIcon} alt="UV Index Icon" />
                     </div>
-                    <p className={styles.infoItem}>{uv}</p>
+                    <div className={styles.infoContainer}>
+                        <p className={styles.infoItem}>{uv}</p>
+                    </div>
                 </div>
 
                 <div className={styles.card}>
@@ -58,7 +64,9 @@ export default function HourlyWeather({preassure, cloudiness, uv, winddeg, sunse
                         <p>Wind Direction</p>
                         <img src={WindIcon} alt="Wind Icon" />
                     </div>
-                    <p className={styles.infoItem}>{winddeg}</p>
+                    <div className={styles.infoContainer}>
+                        <p className={styles.infoItem}>{winddeg}</p>
+                    </div>
                 </div>
 
                 <div className={styles.card}>
@@ -66,7 +74,9 @@ export default function HourlyWeather({preassure, cloudiness, uv, winddeg, sunse
                         <p>Sunrise</p>
                         <img src={SunriseIcon} alt="Sunrise Icon" />
                     </div>
-                    <p className={styles.infoItem}>{sunrise}</p>
+                    <div className={styles.infoContainer}>
+                        <p className={styles.infoItem}>{sunrise}</p>
+                    </div>
                 </div>
 
                 <div className={styles.card}>
@@ -74,7 +84,9 @@ export default function HourlyWeather({preassure, cloudiness, uv, winddeg, sunse
                         <p>Sunset</p>
                         <img src={SunsetIcon} alt="Sunset Icon" />
                     </div>
-                    <p className={styles.infoItem}>{sunset}</p>
+                    <div className={styles.infoContainer}>
+                        <p className={styles.infoItem}>{sunset}</p>
+                    </div>
                 </div>
 
             </div>

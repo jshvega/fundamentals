@@ -28,14 +28,12 @@ export default function CurrentWeather({condition, conditionIcon, temp, time, wi
 
             <div className={styles.widgetMain}>
 
-                <div className={styles.topGroup}>
-                    <div className={styles.conditionDiv}>
-                        <span className={styles.condition}>{condition}</span>
-                        <div className={styles.conditionIcon}>{conditionIcon}</div>
-                    </div>
-
-                    <p className={styles.temp}>{`${temp}°`}</p>
+                <div className={styles.conditionDiv}>
+                    <span className={styles.condition}>{condition}</span>
+                    <div className={styles.conditionIcon}>{conditionIcon}</div>
                 </div>
+
+                <p className={styles.temp}>{`${temp}°`}</p>
 
                 <div className={styles.timeDiv}>
                     <span className={styles.localTime}>As of:</span>

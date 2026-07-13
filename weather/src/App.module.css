@@ -1,0 +1,170 @@
+.viewport{
+    display: flex;
+    width: 100dvw;
+    height: 100dvh;
+}
+
+.content{
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: var(--space-md);
+    gap: var(--space-xl);
+    width: 80%;
+    height: 100%;
+}
+.sidePanel{
+    width: 20%;
+    height: 100%;
+}
+
+.topNav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+}
+.projectName{
+    display: flex;
+    align-items: end;
+    gap: var(--space-m);
+}
+.projectName p{
+    margin: 0;
+    color: var(--color-type);
+}
+.weatherDashboard{
+    line-height: 1.1;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.8rem;
+}
+.fundamentals{
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-size: var(--fs-lg);   
+    font-weight: 500;
+    color: var(--color-type);
+}
+.dropdownBar{
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-xl);
+}
+
+.widgetGrid{
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 3fr 2fr;
+    grid-template-areas: 
+    "map map current daily"
+    "hourly hourly addl addl";
+
+    gap: var(--space-md);
+
+    width: 100%;
+    flex: 1;
+}
+
+
+
+
+/* ---------- MEDIA QUERIES ---------- */
+
+@media (max-width: 94em) /* --- :   > 1,500px */ {
+    .viewport{
+        height: 100dvh;
+    }
+    .content{
+        overflow-y: auto;
+        width: 70%;
+    }
+    .sidePanel{
+        width: 30%;
+    }
+    .topNav{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: var(--space-lg);
+        margin-top: var(--space-m);
+    }
+    .dropdownBar{
+        justify-content: center;
+        padding: var(--space-lg) 0;
+        width: 100%;
+        border-top: 1px solid var(--color-borders);
+        border-bottom: 1px solid var(--color-borders);
+    }
+    .widgetGrid{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 3.5fr 3.5fr 2fr 2fr;
+        grid-template-areas: 
+        "current daily"
+        "map map "
+        "hourly hourly"
+        "addl addl";
+
+        gap: var(--space-md);
+        width: 100%;
+        flex: 1;
+    }
+}
+@media (max-width: 62em) /* --- :   > 768px */   {
+    .viewport{
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+    }
+    .content{
+        overflow-y: auto;
+        width: 100%;
+        height: auto;
+    }
+    .sidePanel{
+        box-sizing: border-box;
+        padding: 0 var(--space-md);
+        width: 100%;
+        height: auto;
+    }
+}
+@media (max-width: 42em) /* --- :   > 498px */   {
+    .topNav{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: var(--space-lg);
+        margin-top: var(--space-m);
+    }
+    .projectName{
+        width: 100%;
+        justify-content: space-between;
+    }
+    .dropdownBar{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-md);
+    }
+    .widgetGrid{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1.2fr 1fr auto 1fr;
+        grid-template-areas:
+        "current"
+        "map"
+        "daily"
+        "hourly"
+        "addl";
+
+        gap: var(--space-md);
+        width: 100%;
+        flex: 1;
+    }
+}
+@media (max-width: 20em) /* MINI:   > 320px */   {
+
+}

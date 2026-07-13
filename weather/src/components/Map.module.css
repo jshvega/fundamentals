@@ -1,10 +1,16 @@
 .mapWX{
+    grid-area: map;
+
     display: inline-flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--space-m);
     box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    /*
     width: 740px;
     height: 500px;
+    */
 }
 .mapLabel {
     display: flex;

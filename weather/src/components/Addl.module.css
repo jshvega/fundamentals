@@ -2,12 +2,18 @@
 
 /* GLOBAL */
 .addlWx {
+    grid-area: addl;
+
     display: inline-flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--space-m);
     box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    /*
     width: 750px;
     height: 320px;
+    */
 }
 .widgetMain {
     box-sizing: border-box;
@@ -70,6 +76,12 @@ img{
     font-family: var(--font-primary);
     font-size: var(--fs-xs);
 }
+.infoContainer{
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding-bottom: 1.5rem;
+}
 .infoItem{
     margin: 0;
     line-height: 1;
@@ -89,8 +101,7 @@ img{
 }
 @media (max-width: 31em) /* MOBILE: > 498px */   {
     .addlWx {
-        width: 90%;
-        height: 500px;
+        height: 100%;
         --fs-3xl: 4rem;
     }
     .widgetMain {
