@@ -7,12 +7,12 @@ type Item = {
     temp:string
 }
 
-type Props = {
+export type HourlyWeatherProps = {
     items:Item[]
 }
 
 
-export default function HourlyWeather({items}:Props){
+export default function HourlyWeather({items}:HourlyWeatherProps){
 
     return (
         <div className={styles.hourlyWx}>

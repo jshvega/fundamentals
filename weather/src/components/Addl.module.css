@@ -10,7 +10,7 @@
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    /*
+    /* Test Dimensions
     width: 750px;
     height: 320px;
     */
@@ -96,9 +96,6 @@ img{
 
 /* ---------- MEDIA QUERIES ---------- */
 
-@media (max-width: 78em) /* MID:    > 1,250px */ {
-    
-}
 @media (max-width: 31em) /* MOBILE: > 498px */   {
     .addlWx {
         height: 100%;

@@ -8,7 +8,7 @@ import UviIcon from "../assets/addl-uvi.svg";
 import WindIcon from "../assets/addl-wind.svg";
 
 
-type Props = {
+export type AddlProps = {
     preassure:number
     cloudiness:number
     uv:number
@@ -18,7 +18,7 @@ type Props = {
 }
 
 
-export default function HourlyWeather({preassure, cloudiness, uv, winddeg, sunset, sunrise}:Props){
+export default function Addl({preassure, cloudiness, uv, winddeg, sunset, sunrise}:AddlProps){
 
     return (
         <div className={styles.addlWx}>

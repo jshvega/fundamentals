@@ -129,12 +129,6 @@
 
 /* ---------- MEDIA QUERIES ---------- */
 
-@media (max-width: 94em) /* ---:    > 1,500px */ {
-    /*BREAKPOINT*/
-    .airWX {
-        height: 100%;
-    }
-}
 @media (max-width: 62em) /* ---:    > 1,250px */ {
     /*RESET*/
     .airWX,

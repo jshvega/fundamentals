@@ -6,7 +6,7 @@ import type { Coordinates, MapType } from '../types'
 import { useEffect } from 'react'
 const key = import.meta.env.VITE_OWM_KEY
 
-type Props = {
+type MapProps = {
     coordinates:Coordinates
     type:MapType
 }
@@ -22,7 +22,7 @@ function RecenterMap({lat, lon}:Coordinates){
     return null
 }
 
-export default function Map({coordinates, type}:Props){
+export default function Map({coordinates, type}:MapProps){
     return (
         <div className={styles.mapWX}>
 

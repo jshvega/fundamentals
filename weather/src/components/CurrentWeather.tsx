@@ -7,7 +7,7 @@ import DropIcon from "../assets/drop.svg?react"
 
 
 
-type CurrentWeatherProps = {
+export type CurrentWeatherProps = {
     condition:string,
     conditionIcon:React.ReactNode
     temp:string

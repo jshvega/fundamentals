@@ -1,41 +1,37 @@
+/*INTERNAL HELPERS*/
+function pad(n:number):string{
+    return String(n).padStart(2, "0")
+}
+function to12h(hours:number):number{
+    const h = hours % 12
+    return h ? h : 12
+}
+
+
 /* FORMAT */
-export function formatLocalTime(dt:number, timezone:number):string{
+export function formatTime12h(dt:number, timezone:number):string{
     const date = new Date((dt+timezone)*1000)
-    let hours = date.getUTCHours()
+    const hours = date.getUTCHours()
     const minutes = date.getUTCMinutes()
-
+    
     const ampm = hours >= 12 ? 'P.M.' : 'A.M.'
 
-    hours = hours % 12
-    hours = hours ? hours : 12
-
-    if (minutes < 10)
-        return `${hours}:0${minutes} ${ampm}`
-    else{
-        return `${hours}:${minutes} ${ampm}`
-    }    
+    return `${to12h(hours)}:${pad(minutes)} ${ampm}` 
 }
-export function formatLocalTime2(dt:number, timezone:number):string{
+export function formatHour12h(dt:number, timezone:number):string{
     const date = new Date((dt+timezone)*1000)
-    let hours = date.getUTCHours()
+    const hours = date.getUTCHours()
 
     const ampm = hours >= 12 ? 'P.M.' : 'A.M.'
 
-    hours = hours % 12
-    hours = hours ? hours : 12
-
-    return `${hours} ${ampm}`  
+    return `${to12h(hours)} ${ampm}`  
 }
-export function formatLocalTime3(dt:number, timezone:number):string{
+export function formatTime24h(dt:number, timezone:number):string{
     const date = new Date((dt+timezone)*1000)
     const hours = date.getUTCHours()
     const minutes = date.getUTCMinutes()
 
-    if (minutes < 10)
-        return `${hours}:0${minutes}`
-    else{
-        return `${hours}:${minutes}`
-    }    
+    return `${pad(hours)}:${pad(minutes)}`   
 }
 export function formatDegs(degs:number):string{
     
@@ -83,7 +79,7 @@ function mToMiles(meters:number):number{
     return Math.round((meters / 1609.344) * 10) / 10
 }
 function cToF(celsius: number): number {
-    return Math.round(((celsius * 9 / 5) + 32) * 10) / 10
+    return Math.round((celsius * 9 / 5) + 32)
 }
 /* PICKER FUNCTIONS */
 export function formatWind(ms:number, units:"metric"|"imperial"):string{
@@ -101,7 +97,7 @@ export function formatTemp(celsius:number, units:"metric"|"imperial"):string{
         `${Math.round(cToF(celsius))} °F` 
         : `${Math.round(celsius)} °C`
 }
-export function formatTemp2(celsius:number, units:"metric"|"imperial"):string{
+export function formatTempBare(celsius:number, units:"metric"|"imperial"):string{
     return units === "imperial" ? 
         `${Math.round(cToF(celsius))}`
         : `${Math.round(celsius)}`

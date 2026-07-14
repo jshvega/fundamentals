@@ -10,11 +10,11 @@ import ShowerRain from "../assets/shower-rain.svg?react"
 import Snow from "../assets/snow.svg?react"
 import Thunderstorm from "../assets/thunderstorm.svg?react"
 
-type Props = {
+type WeatherIconProps = {
     iconCode:string
 }
 
-export default function WeatherIcon ({iconCode}:Props){
+export default function WeatherIcon ({iconCode}:WeatherIconProps){
 
     const svgByIconCode:Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
         "01": Clear,

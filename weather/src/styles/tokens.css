@@ -74,4 +74,10 @@ body {
     /* @media (max-width: 48em) TABLET: > 768px   {} */
     /* @media (max-width: 31em) MOBILE: > 498px   {} */
     /* @media (max-width: 20em) MINI:   > 320px   {} */
+
+    /* ---------- APP BREAKPOINTS (docs only) ---------- */
+    /* @media (max-width: 96em) --- :   > 1,250px {} */
+    /* @media (max-width: 62em) --- :   > 768px   {} */
+    /* @media (max-width: 42em) --- :   > 498px   {} */
+    /* @media (max-width: 20em) MINI:   > 320px   {} */
 }

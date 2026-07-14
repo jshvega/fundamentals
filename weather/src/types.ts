@@ -3,6 +3,8 @@ export type Coordinates = {
     lon:number
 }
 
+export type Units = "metric" | "imperial"
+
 export type MapType = 
     "clouds_new" | 
     "precipitation_new" | 

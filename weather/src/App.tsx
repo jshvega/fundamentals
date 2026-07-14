@@ -13,16 +13,14 @@ import {
   getAirPollution
 } from './api'
 
-// Utils
+// Mapper
 import {
-  formatWind,
-  formatVisibility,
-  formatTemp, formatDegs,
-  formatTemp2, formatLocalTime,
-  formatLocalTime2,
-  formatLocalTime3,
-  formatWeekday
-} from './lib/utils'
+  mapCurrentWeather,
+  mapDailyWeather,
+  mapHourlyWeather,
+  mapAddl,
+  mapAqi
+} from './lib/mappers.tsx'
 
 // Types
 import type { MapType } from './types'
@@ -37,7 +35,6 @@ import Map                from "./components/Map"
 import LocationDropdown   from "./components/LocationDropdown"
 import UnitsDropdown      from "./components/UnitsDropdown"
 import TypeDropdown       from "./components/TypeDropdown"
-import WeatherIcon        from "./components/WeatherIcon"
 
 
 function App(){
@@ -120,67 +117,21 @@ function App(){
 
           <div className={styles.widgetGrid}>
 
-             
             <Map coordinates={coordinates} type={mapType}/>
           
+            <CurrentWeather {...mapCurrentWeather(weatherData, units)}/>
 
-            <CurrentWeather 
-              // No mapping function. Mapped inline.
-              condition={weatherData.weather[0].description}
-              conditionIcon={<WeatherIcon iconCode={weatherData.weather[0].icon}/>}
-              temp={formatTemp2(weatherData.main.temp, units)} 
-              time={formatLocalTime(weatherData.dt, weatherData.timezone)} 
-              wind={formatWind(weatherData.wind.speed, units)} 
-              humidity={weatherData.main.humidity} 
-              visibility={formatVisibility(weatherData.visibility, units)}
-            />
-            
+            <DailyWeather {...mapDailyWeather(dailyData, units)}/>
 
-            
-            <DailyWeather 
-              day={formatWeekday(dailyData.data[0].dt, dailyData?.timezone_offset)}
-              temp={formatTemp(dailyData.data[0].temp.day, units)}
-              max={formatTemp(dailyData.data[0].temp.max, units)} 
-              min={formatTemp(dailyData.data[0].temp.min, units)}
-
-              strips={dailyData.data.slice(1, 6).map(day=>({
-                day: formatWeekday(day.dt, dailyData?.timezone_offset),
-                temp: formatTemp(day.temp.day, units),
-                max: formatTemp(day.temp.max, units),
-                min: formatTemp(day.temp.min, units),
-              }))}
-            />
-
-            <HourlyWeather 
-              items={hourlyData.data.slice(0, 12).map(item=>({
-                time: formatLocalTime2(item.dt, hourlyData?.timezone_offset),
-                icon:<WeatherIcon iconCode={item.weather[0].icon}/>,
-                temp: formatTemp(item.temp, units),
-              }))}
-            />
+            <HourlyWeather {...mapHourlyWeather(hourlyData, units)}/>
           
-            <Addl 
-              preassure={addlData.data[0].pressure}
-              cloudiness={addlData.data[0].clouds}
-              uv={addlData.data[0].uvi}
-              winddeg={formatDegs(addlData.data[0].wind_deg)}
-              sunset={formatLocalTime3(addlData.data[0].sunset, addlData.timezone_offset)}
-              sunrise={formatLocalTime3(addlData.data[0].sunrise, addlData.timezone_offset)}
-            />
-            
+            <Addl {...mapAddl(addlData)}/>
 
           </div>
         </div>
 
         <div className={styles.sidePanel}>
-          <Aqi
-            aqi={airData.list[0].main.aqi}
-            pmtwo={Math.round(airData.list[0].components.pm2_5)}
-            pmten={Math.round(airData.list[0].components.pm10)}
-            othree={Math.round(airData.list[0].components.o3)}
-            notwo={Math.round(airData.list[0].components.no2)}
-            co={Math.round(airData.list[0].components.co)}
-          />
+          <Aqi {...mapAqi(airData)}/>
         </div>
       </div>
     </>

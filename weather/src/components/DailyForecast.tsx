@@ -8,7 +8,7 @@ type Strip = {
     min:string
 }
 
-type Props = {
+export type DailyWeatherProps = {
     day:string
     temp:string
     max:string
@@ -17,7 +17,7 @@ type Props = {
 }
 
 
-export default function DailyWeather({day, temp, max, min, strips}:Props){
+export default function DailyWeather({day, temp, max, min, strips}:DailyWeatherProps){
 
     return (
         <div className={styles.dailyWx}>

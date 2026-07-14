@@ -74,7 +74,7 @@
 
 /* ---------- MEDIA QUERIES ---------- */
 
-@media (max-width: 94em) /* --- :   > 1,500px */ {
+@media (max-width: 96em) /* --- :   > 1,500px */ {
     .viewport{
         height: 100dvh;
     }
@@ -164,7 +164,4 @@
         width: 100%;
         flex: 1;
     }
-}
-@media (max-width: 20em) /* MINI:   > 320px */   {
-
 }

@@ -1,6 +1,5 @@
 import { z } from "zod"
 
-// returns an array of locations
 export const weatherSchema = z.object({
     weather:z.array(z.object({
         description:z.string(),

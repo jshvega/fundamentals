@@ -2,7 +2,7 @@ import styles from './Aqi.module.css'
 import { activeBand, sliderPercent } from '../lib/utils'
 
 
-type Props = {
+export type AirPollutionProps = {
     aqi:number
     pmtwo:number
     pmten:number
@@ -12,7 +12,7 @@ type Props = {
 }
 
 
-export default function AirPollution({aqi, pmtwo, pmten, othree, notwo, co}:Props){
+export default function AirPollution({aqi, pmtwo, pmten, othree, notwo, co}:AirPollutionProps){
 
     const BANDS = ["Good", "Fair", "Moderate", "Poor", "Very Poor"]
     const BAND_STYLES = [styles.good, styles.fair, styles.moderate, styles.poor, styles.veryPoor]
