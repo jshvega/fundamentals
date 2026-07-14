@@ -7,8 +7,10 @@
 }
 
 .icon{
-    color: var(--color-accent);
+    align-self: center;
+    justify-self: center;
     margin-bottom: var(--space-m);
+    color: var(--color-accent);
 }
 
 .value, .label{

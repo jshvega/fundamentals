@@ -48,15 +48,15 @@
     box-sizing: border-box;
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, auto);
+
+    justify-content: space-between;
 
     width: 100%;
 
     padding: 2rem var(--space-lg);
 }
-.stripMain > *:nth-child(n+4), .stripSecondary > *:nth-child(n+4) {
-  justify-self: end;
-}
+
 .stripMain{
     border: 1px solid var(--color-type-muted);
     border-radius: var(--radius-sm);

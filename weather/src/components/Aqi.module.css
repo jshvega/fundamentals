@@ -125,6 +125,26 @@
 }
 
 
+/* SCROLLBAR */
+.widgetMain {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-borders) transparent;
+}
+.widgetMain::-webkit-scrollbar {
+  width: 6px;                    
+}
+.widgetMain::-webkit-scrollbar-track {
+  background: transparent;
+}
+.widgetMain::-webkit-scrollbar-thumb {
+  background-color: var(--color-borders);
+  border-radius: var(--radius-total);
+}
+.widgetMain::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-type-muted);
+}
+
+
 
 
 /* ---------- MEDIA QUERIES ---------- */

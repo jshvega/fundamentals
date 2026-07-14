@@ -69,6 +69,23 @@
     flex: 1;
 }
 
+.content {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-borders) transparent;
+}
+.content::-webkit-scrollbar {
+  width: 6px;                    
+}
+.content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.content::-webkit-scrollbar-thumb {
+  background-color: var(--color-borders);
+  border-radius: var(--radius-total);
+}
+.content::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-type-muted);
+}
 
 /* ----------- CELL MAPPING ---------- */
 .currentCell{
@@ -79,6 +96,7 @@
 }
 .hourlyCell{
     grid-area: hourly;
+    overflow-x: auto;
 }
 .dailyCell{
     grid-area: daily;
@@ -146,6 +164,7 @@
     }
     .sidePanel{
         box-sizing: border-box;
+        margin-bottom: var(--space-lg);
         padding: 0 var(--space-md);
         width: 100%;
         height: auto;

@@ -16,7 +16,7 @@ function RecenterMap({lat, lon}:Coordinates){
     const map = useMap()
 
     useEffect(() => {
-        map.setView([lat, lon], 7)
+        map.setView([lat, lon], 8)
     }, [lat, lon, map])
 
     return null
@@ -32,7 +32,7 @@ export default function Map({coordinates, type}:MapProps){
 
             <div className={styles.widgetMain}>
 
-                <MapContainer className={styles.mapContainer} center={[coordinates.lat, coordinates.lon]} zoom={7}>
+                <MapContainer className={styles.mapContainer} center={[coordinates.lat, coordinates.lon]} zoom={8} scrollWheelZoom={false}>
 
                     {/*BASE MAP*/}
                     <TileLayer 

@@ -41,9 +41,11 @@ export default function CurrentWeather({condition, conditionIcon, temp, time, wi
                 </div>
 
                 <div className={styles.statItemStrip}>
+                    <div className={styles.blank}></div>
                     <StatItem icon={WindIcon} value={`${wind}`} label="Wind" />
                     <StatItem icon={DropIcon} value={`${humidity}%`} label="Humidity" />
                     <StatItem icon={EyeIcon} value={`${visibility}`} label="Visibility" />
+                    <div className={styles.blank}></div>
                 </div>
 
             </div>
