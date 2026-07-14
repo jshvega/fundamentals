@@ -1,5 +1,6 @@
 # FUNDAMENTALS
 ### by Manfred Vega
+[Link](https://fundamentals.manfred.studio)
 
 > I noticed I was learning a lot of theory but never actually building anything on my own. FUNDAMENTALS is my attempt at correcting that... five projects, increasing in complexity, written without AI generating my code.
 
@@ -13,8 +14,8 @@
 |-|-|-|-|
 |01|[Calculator](./calculator)|HTML · CSS · Vanilla JS|Completed|
 |02|[To-Do App](./todo)|Vanilla JS · localStorage|Completed|
-|03|[Weather Dashboard](./weather)|React · TypeScript · Vite|In Progress|
-|04|[Movie Searcher](./movies)|Next.js · TypeScript · TanStack Query|Not started|
+|03|[Weather Dashboard](./weather)|React · TypeScript · Vite · REST API · TanStack Query · Zod · react-leaflet|Completed|
+|04|[Movie Searcher](./movies)|Next.js (App Router) · TS · TanStack Query · Server Components · Streaming|Not started|
 |05|[Expense Tracker](./expenses)|Next.js · Supabase · Docker · GitHub Actions|Not started|
 
 
@@ -52,11 +53,13 @@ FUNDAMENTALS/
 ├── index.html              # Hub page — links to all projects
 ├── index.css
 ├── index.js
-├── global.css              # Site-wide base styles & CSS variables
+├── global.css
 ├── global.js
 ├── README.md
 ├── .gitignore
 ├── under-construction.html
+├── about.html
+├── about.css
 ├── calculator/
 ├── expenses/
 ├── media/
@@ -71,7 +74,11 @@ Each project folder contains its own README with stack, goals, what was learned,
 \---
 
 
-## How to run locally
+## Running the projects
+
+All projects are deployed and can be viewed live. Links are in the project list above.
+
+To run locally instead:
 
 The first two projects are plain HTML/CSS/JS; for example, just open `calculator/index.html` in a browser.
 
