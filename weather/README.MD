@@ -48,7 +48,7 @@ The solution required a pattern I hadn't used: a child component rendered inside
 - No live clock. Dashboard displays observation time ("As of:"), not real-time
 - Data freshness bounded by OWM's update cadence (~10 min), so displayed time can lag wall-clock
 - Cities are hardcoded (16 preset). Production would use free-text geocode search
-- Native <select> dropdown menus are unstyleable. Production would use a custom Select primitive
+- Native select dropdown menus are unstyleable. Production would use a custom Select primitive
 - API key is client-side and visible in the bundle. Production would proxy through a serverless function (and note: Project 4 fixes exactly this with Server Components)
 - Map is one-way (dropdown → map); no click-to-set-location, a deliberate scope decision given the fixed-city model
 - Map legend uses approximate gradients, not OWM's exact color scales
