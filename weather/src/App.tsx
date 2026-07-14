@@ -35,6 +35,13 @@ import Map                from "./components/Map"
 import LocationDropdown   from "./components/LocationDropdown"
 import UnitsDropdown      from "./components/UnitsDropdown"
 import TypeDropdown       from "./components/TypeDropdown"
+import WidgetError        from './components/WidgetError.tsx'
+import AqiError           from './components/AqiError.tsx'
+import FullPageError      from './components/FullPageError.tsx'
+
+// Skeletons
+import WidetSkeleton from './components/skeletons/WidetSkeleton.tsx'
+import AqiSkeleton from './components/skeletons/AqiSkeleton.tsx'
 
 
 function App(){
@@ -47,54 +54,45 @@ function App(){
 
   /* --- USEQUERY --- */
   // Geocode
-  const {data:geoData, isPending, isError} = useQuery({ // useQuery: the hook that runs a fetch function and hands back its state
+  const {data:geoData, isPending:geoPending, isError:geoError} = useQuery({ // useQuery: the hook that runs a fetch function and hands back its state
     queryKey: ["geocode", city], //unique label for this query's cached result
     queryFn: () => getGeocode(city) //the function that does the fetching
   })
   const coordinates = geoData?.[0]
   // Current weather
-  const {data:weatherData} = useQuery({
+  const {data:weatherData, isPending:weatherPending, isError:weatherError} = useQuery({
     queryKey: ["weather", coordinates?.lat, coordinates?.lon],
     queryFn: () => getWeather(coordinates!),
     enabled: !!coordinates,
   })
   // Daily forecast
-  const {data:dailyData} = useQuery({
+  const {data:dailyData, isPending:dailyPending, isError:dailyError} = useQuery({
     queryKey: ["daily", coordinates?.lat, coordinates?.lon],
     queryFn: () => getDaily(coordinates!),
     enabled: !!coordinates,
   })
   // Daily hourly
-  const {data:hourlyData} = useQuery({
+  const {data:hourlyData, isPending:hourlyPending, isError:hourlyError} = useQuery({
     queryKey: ["hourly", coordinates?.lat, coordinates?.lon],
     queryFn: () => getHourly(coordinates!),
     enabled: !!coordinates,
   })
   // Addl info
-  const {data:addlData} = useQuery({
+  const {data:addlData, isPending:addlPending, isError:addlError} = useQuery({
     queryKey: ["addl", coordinates?.lat, coordinates?.lon],
     queryFn: () => getAddl(coordinates!),
     enabled: !!coordinates,
   })
   // Air pollution
-   const {data:airData} = useQuery({
+   const {data:airData, isPending:airPending, isError:airError} = useQuery({
     queryKey: ["air_pollution", coordinates?.lat, coordinates?.lon],
     queryFn: () => getAirPollution(coordinates!),
     enabled: !!coordinates,
   })
 
 
-  /* --- GUARDS --- */
-  if (isPending) return <p>Loading...</p>
-  if (isError) return <p>Something went wrong</p>
-  if (
-       !dailyData 
-    || !weatherData 
-    || !hourlyData 
-    || !addlData 
-    || !airData 
-    || !coordinates
-  ) return <p>Something went wrong</p> // Placeholder. Will polish in Phase 9.
+  /* --- GUARD --- */
+  if (geoError) return <FullPageError />
 
 
   /* --- RETURN --- */
@@ -117,21 +115,45 @@ function App(){
 
           <div className={styles.widgetGrid}>
 
-            <Map coordinates={coordinates} type={mapType}/>
-          
-            <CurrentWeather {...mapCurrentWeather(weatherData, units)}/>
+            <div className={styles.mapCell}>
+              {geoPending ? <WidetSkeleton label='Map'/>
+              : geoError || !coordinates ? <WidgetError label="Map"/>
+              : <Map coordinates={coordinates} type={mapType}/> }
+            </div>
 
-            <DailyWeather {...mapDailyWeather(dailyData, units)}/>
+            <div className={styles.currentCell}>
+              {weatherPending ? <WidetSkeleton label='Current Weather'/>
+              : weatherError || !weatherData ? <WidgetError label="Current Weather"/>
+              : <CurrentWeather {...mapCurrentWeather(weatherData, units)}/> }
+            </div>
 
-            <HourlyWeather {...mapHourlyWeather(hourlyData, units)}/>
-          
-            <Addl {...mapAddl(addlData)}/>
+            <div className={styles.dailyCell}>
+              {dailyPending ? <WidetSkeleton label='Daily Forecast'/>
+              : dailyError || !dailyData ? <WidgetError label="Daily Forecast"/>
+              : <DailyWeather {...mapDailyWeather(dailyData, units)}/> }
+            </div>
 
+            <div className={styles.hourlyCell}>
+              {hourlyPending ? <WidetSkeleton label='Hourly Forecast'/>
+              : hourlyError || !hourlyData ? <WidgetError label="Hourly Forecast"/>
+              : <HourlyWeather {...mapHourlyWeather(hourlyData, units)}/> }
+            </div>
+
+            <div className={styles.addlCell}>
+              {addlPending ? <WidetSkeleton label='Additional Information'/>
+              : addlError || !addlData ? <WidgetError label="Additional Information"/>
+              : <Addl {...mapAddl(addlData)}/> }
+            </div>
+            
           </div>
         </div>
 
         <div className={styles.sidePanel}>
-          <Aqi {...mapAqi(airData)}/>
+
+          {airPending ? <AqiSkeleton/>
+            : airError || !airData ? <AqiError/>
+            : <Aqi {...mapAqi(airData)}/> }
+
         </div>
       </div>
     </>

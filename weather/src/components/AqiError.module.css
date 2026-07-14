@@ -1,0 +1,127 @@
+/* GLOBAL */
+.airWX{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: var(--space-lg);
+
+    width: 100%;
+    height: 100%;
+
+    margin-left: auto;
+    padding: var(--space-md);
+    padding-top: var(--space-lg);
+
+    border-left: 1px solid var(--color-borders);
+
+    font-family: var(--font-primary);
+    color: var(--color-type-muted);
+}
+.airLabel{
+    display: none;
+}
+.sidebarTitle{
+    margin: 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: var(--fs-xl);
+}
+.widgetMain{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+
+    overflow-y: auto;
+
+    flex: 1;
+    max-height: 800px;
+    width: 100%;
+}
+.widgetMain p{
+    font-size: var(--fs-sm);
+    color: var(--color-accent-rd);
+}
+
+.skeletonBody{
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-sm);
+    background-color: red;
+}
+
+
+
+
+/* ---------- MEDIA QUERIES ---------- */
+@media (max-width: 62em) /* ---:    > 1,250px */ {
+    /*RESET*/
+    .airWX,
+    .widgetMain{
+        all: unset;
+    }
+
+    /*BREAKPOINT*/
+    .airWX {
+        display: inline-flex;
+        flex-direction: column;
+        gap: var(--space-md);
+        box-sizing: border-box;
+        width: 100%;
+        height: auto;
+
+        font-family: var(--font-primary);
+        color: var(--color-type-muted);
+    }
+    .widgetMain {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+
+        width: 100%;
+        height: auto;
+
+        box-sizing: border-box;
+        padding: var(--space-md);
+        padding-bottom: var(--space-lg);
+        gap: var(--space-md);
+
+        border: 1px solid var(--color-borders);
+        border-radius: var(--radius-md);
+    }
+    .airLabel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        width: 100%;
+        padding: var(--space-sm) 0;
+        border: 1px solid var(--color-type);
+        border-radius: var(--radius-total);
+    }
+    .airLabel span {
+        margin-bottom: 0.1rem;
+        font-family: var(--font-display);
+        font-style: italic;
+        font-size: var(--fs-md);
+        color: var(--color-type);
+    }
+    .sidebarTitle{
+        display: none;
+    }
+}
+@media (max-width: 31em) /* MOBILE: > 498px */   {
+    .airWX {
+        --space-sm: 0.8rem;
+    }
+}
+@media (max-width: 20em) /* MINI:   > 320px */   {
+    .airWX {
+        --fs-sm: 1rem;
+        --fs-3xl: 3.5rem;
+    }
+}

@@ -70,10 +70,29 @@
 }
 
 
+/* ----------- CELL MAPPING ---------- */
+.currentCell{
+    grid-area: current;
+}
+.mapCell{
+    grid-area: map;
+}
+.hourlyCell{
+    grid-area: hourly;
+}
+.dailyCell{
+    grid-area: daily;
+}
+.addlCell{
+    grid-area: addl;
+}
+
+.aqiRail{
+    grid-area: aqi;
+}
 
 
 /* ---------- MEDIA QUERIES ---------- */
-
 @media (max-width: 96em) /* --- :   > 1,500px */ {
     .viewport{
         height: 100dvh;
