@@ -105,23 +105,23 @@
 }
 .good {
     background-color: var(--color-accent-gn1);
-    color: var(--color-bg);
+    color: var(--parchment);
 }
 .fair {
     background-color: var(--color-accent-gn2);
-    color: var(--color-bg);
+    color: var(--parchment);
 }
 .moderate {
     background-color: var(--color-accent-yw);
-    
+    color: var(--shadow);
 }
 .poor {
     background-color: var(--color-accent);
-    color: var(--color-bg);
+    color: var(--parchment);
 }
 .veryPoor {
     background-color: var(--color-accent-rd);
-    color: var(--color-bg);
+    color: var(--parchment);
 }
 
 
