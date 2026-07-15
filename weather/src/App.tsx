@@ -23,8 +23,11 @@ import {
 } from './lib/mappers.tsx'
 
 // Types
-import type { MapType } from './types'
+import type { MapType, Units } from './types'
 import type { Theme } from './types'
+
+// Hooks
+import { usePersistedState } from './hooks/usePersistedState.ts'
 
 // Components
 import CurrentWeather     from "./components/CurrentWeather"
@@ -49,13 +52,19 @@ import AqiSkeleton from './components/skeletons/AqiSkeleton.tsx'
 function App(){
 
   /* ---  USE SATES --- */
-  const [city, setCity] = useState("Mexico City")
-  const [units, setUnits] = useState<"metric" | "imperial">("metric")
+  // City
+  const [city, setCity] = usePersistedState("city", "Mexico City", (s) => s)
+  // Units
+  const [units, setUnits] = usePersistedState<Units>("units", "metric", (s) => s === "imperial" ? "imperial" : "metric")
+  // Map Type
   const [mapType, setMapType] = useState<MapType>("precipitation_new")
+  // Theme
   const [theme, setTheme] = useState<Theme>(() => {
     const saved = localStorage.getItem("theme")
     return saved === 'dark' ? 'dark' : 'light'
   })
+
+
   /* --  USE EFFECTS -- */
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme)
