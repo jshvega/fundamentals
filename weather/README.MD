@@ -58,7 +58,7 @@ The solution required a pattern I hadn't used: a child component rendered inside
 
 ## Running locally
 
-The dashboard is deployed at [weather.manfred.studio](https://weather.manfred.studio) — no setup needed to try it. To run it yourself, you'll need an OpenWeatherMap API key with a One Call subscription.
+The dashboard is deployed at [weather.manfred.studio](https://weather.manfred.studio); no setup needed to try it. To run it yourself, you'll need an OpenWeatherMap API key with a One Call subscription.
 
 **1. Get an API key**
 Create an OpenWeatherMap account, then subscribe to **One Call API 4.0** via the "One Call by Call" subscription (found on the pricing page). This is a pay-as-you-call model: the first 1,000 calls per day are free, and the subscription defaults to a 2,000 calls/day cap you can adjust in the Billing plans tab. Subscribing requires a payment method, but normal use of this dashboard stays comfortably within the free 1,000/day allowance. This project uses One Call API 4.0 for current, hourly, and daily weather, plus the Air Pollution API (available on the free tier without a subscription).
@@ -82,4 +82,4 @@ The app runs at `http://localhost:5173`.
 > **Note:** New keys and subscription activation can take up to two hours to become active. If requests fail with 401 immediately after signing up, that's usually why.
 
 ## Demo GIF
-![Weather Dashboard demo](/media/demo.gif)
+![Weather Dashboard demo](media/demo.gif)
