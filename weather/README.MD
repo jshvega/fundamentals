@@ -58,24 +58,19 @@ The solution required a pattern I hadn't used: a child component rendered inside
 
 ## Running locally
 
-The dashboard is deployed at [weather.manfred.studio](https://weather.manfred.studio). No setup needed to try it.
-
-To run it yourself, you'll need a free [OpenWeatherMap](https://openweathermap.org/api) API key.
+The dashboard is deployed at [weather.manfred.studio](https://weather.manfred.studio) — no setup needed to try it. To run it yourself, you'll need an OpenWeatherMap API key with a One Call subscription.
 
 **1. Get an API key**
+Create an OpenWeatherMap account, then subscribe to **One Call API 4.0** via the "One Call by Call" subscription (found on the pricing page). This is a pay-as-you-call model: the first 1,000 calls per day are free, and the subscription defaults to a 2,000 calls/day cap you can adjust in the Billing plans tab. Subscribing requires a payment method, but normal use of this dashboard stays comfortably within the free 1,000/day allowance. This project uses One Call API 4.0 for current, hourly, and daily weather, plus the Air Pollution API (available on the free tier without a subscription).
 
-Create a free OpenWeatherMap account. This project uses the One Call API 3.0 (current, hourly, daily) and the Air Pollution API — both are available on the free tier, though One Call requires adding a payment method (with a free call allowance).
+> **Note:** OpenWeatherMap's pricing and product tiers change over time. The details above are accurate as of July 2026. Please verify current terms on the pricing page before subscribing.
 
 **2. Set up the environment**
-
-From the `weather/` directory, create a `.env` file: 
-
-VITE_OWM_KEY=your_api_key_here
+From the `weather/` directory, create a `.env` file: VITE_OWM_KEY=your_api_key_here
 
 The `VITE_` prefix is required — Vite only exposes prefixed variables to the client.
 
 **3. Install and run**
-
 ```bash
 cd weather
 npm install
@@ -84,7 +79,7 @@ npm run dev
 
 The app runs at `http://localhost:5173`.
 
-> **Note:** New OpenWeatherMap keys can take up to a couple of hours to activate. If requests fail with a 401 immediately after signup, that's usually why.
+> **Note:** New keys and subscription activation can take up to two hours to become active. If requests fail with 401 immediately after signing up, that's usually why.
 
 ## Demo GIF
-![Weather Dashboard demo](/media/demo.gif)...
+![Weather Dashboard demo](/media/demo.gif)

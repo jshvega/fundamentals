@@ -123,7 +123,7 @@ function App(){
 
           <div className={styles.topNav}>
             <div className={styles.projectName}>
-              <a className={styles.fundamentals} href='fundamentals.manfred.studio/'>FUNDAMENTALS</a>
+              <a className={styles.fundamentals} href='https://fundamentals.manfred.studio/'>FUNDAMENTALS</a>
               <p className={styles.weatherDashboard}>Weather Dashboard</p>
             </div>
             <div className={styles.dropdownBar}>
