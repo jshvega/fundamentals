@@ -5,6 +5,8 @@ export type Coordinates = {
 
 export type Units = "metric" | "imperial"
 
+export type Theme = "light" | "dark"
+
 export type MapType = 
     "clouds_new" | 
     "precipitation_new" | 

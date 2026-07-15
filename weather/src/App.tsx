@@ -1,5 +1,5 @@
 // React + Styles
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useQuery } from "@tanstack/react-query"
 import styles from './App.module.css'
 
@@ -24,6 +24,7 @@ import {
 
 // Types
 import type { MapType } from './types'
+import type { Theme } from './types'
 
 // Components
 import CurrentWeather     from "./components/CurrentWeather"
@@ -35,6 +36,7 @@ import Map                from "./components/Map"
 import LocationDropdown   from "./components/LocationDropdown"
 import UnitsDropdown      from "./components/UnitsDropdown"
 import TypeDropdown       from "./components/TypeDropdown"
+import ThemeDropdown      from './components/ThemeDropdown.tsx'
 import WidgetError        from './components/WidgetError.tsx'
 import AqiError           from './components/AqiError.tsx'
 import FullPageError      from './components/FullPageError.tsx'
@@ -50,6 +52,15 @@ function App(){
   const [city, setCity] = useState("Mexico City")
   const [units, setUnits] = useState<"metric" | "imperial">("metric")
   const [mapType, setMapType] = useState<MapType>("precipitation_new")
+  const [theme, setTheme] = useState<Theme>(() => {
+    const saved = localStorage.getItem("theme")
+    return saved === 'dark' ? 'dark' : 'light'
+  })
+  /* --  USE EFFECTS -- */
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme)
+    localStorage.setItem("theme", theme)
+  }, [theme])
 
 
   /* --- USEQUERY --- */
@@ -107,9 +118,10 @@ function App(){
               <p className={styles.weatherDashboard}>Weather Dashboard</p>
             </div>
             <div className={styles.dropdownBar}>
+              <LocationDropdown current={city} onChange={setCity}/>
               <TypeDropdown current={mapType} onChange={setMapType}/>
               <UnitsDropdown current={units} onChange={setUnits}/>
-              <LocationDropdown current={city} onChange={setCity}/>
+              <ThemeDropdown current={theme} onChange={setTheme}/>
             </div>
           </div>
 

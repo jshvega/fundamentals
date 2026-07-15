@@ -81,3 +81,13 @@ body {
     /* @media (max-width: 42em) --- :   > 498px   {} */
     /* @media (max-width: 20em) MINI:   > 320px   {} */
 }
+
+[data-theme="dark"]{
+    --color-bg:           var(--shadow);
+    --color-type:         var(--parchment);
+    --color-type-muted:   var(--dust-grey);
+    --color-type-muted-2: var(--grey-olive);
+    --color-borders:      var(--grey-olive);
+    --color-area-muted:   var(--charcoal-brown);
+    --color-accent-muted: var(--walnut);
+}

@@ -45,6 +45,7 @@
     font-family: var(--font-display);
     font-style: italic;
     font-size: var(--fs-md);
+    color: var(--color-type);
 }
 
 
@@ -75,6 +76,7 @@ img{
     margin: 0;
     font-family: var(--font-primary);
     font-size: var(--fs-xs);
+    color: var(--color-type);
 }
 .infoContainer{
     display: flex;

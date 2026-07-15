@@ -21,6 +21,7 @@
     padding: var(--space-sm) 0;
     border: 1px solid var(--color-type);
     border-radius: var(--radius-total);
+    color: var(--color-type);
 }
 .mapLabel span {
     margin-bottom: 0.1rem;
