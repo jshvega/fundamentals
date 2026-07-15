@@ -105,11 +105,11 @@
 }
 .good {
     background-color: var(--color-accent-gn1);
-    color: var(--parchment);
+    color: var(--color-bg);
 }
 .fair {
     background-color: var(--color-accent-gn2);
-    color: var(--parchment);
+    color: var(--color-bg);
 }
 .moderate {
     background-color: var(--color-accent-yw);
@@ -117,11 +117,11 @@
 }
 .poor {
     background-color: var(--color-accent);
-    color: var(--parchment);
+    color: var(--color-bg);
 }
 .veryPoor {
     background-color: var(--color-accent-rd);
-    color: var(--parchment);
+    color: var(--color-bg);
 }
 
 
